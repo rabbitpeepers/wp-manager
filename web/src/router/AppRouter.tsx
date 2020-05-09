@@ -5,7 +5,7 @@ import { path } from 'src/router/path'
 
 export const AppRouter: React.FC = () => {
   return (
-    <Router>
+    <Router style={{ height: '100%' }}>
       <LoginPage path={path.login[1]} />
     </Router>
   )

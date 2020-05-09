@@ -9,11 +9,22 @@ import {
 } from 'grommet'
 import { Secure } from 'grommet-icons'
 
+type FormData = {
+  username: string
+  password: string
+}
+
 export const LoginForm: React.FC = () => {
   const { t } = useTranslation()
-  const onSubmit = React.useCallback(() => {
+  const [value, setValue] = React.useState<FormData>({
+    password: '',
+    username: '',
+  })
+
+  const handleSubmit = React.useCallback(() => {
     console.log('Submit')
   }, [])
+  const handleChange = React.useCallback((nextValue) => setValue(nextValue), [setValue])
 
   return (
     <Box background="light-2" elevation="small">
@@ -21,15 +32,19 @@ export const LoginForm: React.FC = () => {
         <Secure size="large" />
       </Box>
       <Box pad="medium" align="stretch">
-        <Form onSubmit={onSubmit}>
+        <Form onSubmit={handleSubmit} onChange={handleChange} value={value}>
           <FormField label={t('login.username')} margin={{ vertical: 'medium' }}>
-            <TextInput name="username" />
+            <TextInput required name="username" />
           </FormField>
-          <FormField label={t('login.password')} margin={{ vertical: 'medium' }}>
+          <FormField
+            label={t('login.password')}
+            margin={{ vertical: 'medium' }}
+            required
+          >
             <TextInput name="password" type="password" />
           </FormField>
           <Box align="center">
-            <Button primary label={t('login.submit')} />
+            <Button type="submit" primary label={t('login.submit')} />
           </Box>
         </Form>
       </Box>
