@@ -1,3 +1,4 @@
+import 'src/lib/i18n'
 import React from 'react'
 import { AppRouter } from 'src/router/AppRouter'
 import { Root } from 'src/components/Root/Root'

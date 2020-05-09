@@ -1,0 +1,9 @@
+{
+  "app": {
+    "loading": "Loading..."
+  },
+  "login": {
+    "documentTitle": "Login",
+    "title": "Login"
+  }
+} 

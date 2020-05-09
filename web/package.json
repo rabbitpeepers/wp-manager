@@ -8,16 +8,19 @@
     "@types/react-dom": "^16.9.0",
     "grommet": "^2.13.0",
     "grommet-icons": "^4.4.0",
+    "i18next": "^19.4.4",
+    "i18next-xhr-backend": "^3.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-i18next": "^11.4.0",
     "react-is": "^16.13.1",
     "react-scripts": "3.4.1",
     "styled-components": "^5.1.0",
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "REACT_APP_BUILD_TIME=$(date +%s) react-scripts start",
+    "build": "REACT_APP_BUILD_TIME=$(date +%s) react-scripts build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color"
   },
   "eslintConfig": {
