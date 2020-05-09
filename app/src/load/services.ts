@@ -1,0 +1,1 @@
+import 'services/serve-static'
