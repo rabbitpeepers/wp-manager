@@ -4,8 +4,9 @@ import { LoginGitHub } from 'src/components/LoginPage/LoginGitHub'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Box, Heading } from 'grommet'
+import { RouteComponentProps } from '@reach/router'
 
-export const LoginPage: React.FC = () => {
+export const LoginPage: React.FC<RouteComponentProps> = () => {
   const { t } = useTranslation()
 
   return (
