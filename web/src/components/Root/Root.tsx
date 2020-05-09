@@ -6,7 +6,7 @@ import { Splash } from 'src/components/Splash/Splash'
 export const Root: React.FC = ({ children }) => (
   <React.Suspense fallback={<Splash />}>
     <Grommet theme={theme} full>
-      <Splash />
+      {children}
     </Grommet>
   </React.Suspense>
 )

@@ -1,9 +1,17 @@
 import React from 'react'
-import { Button } from 'grommet'
+import { Box, Button, Text } from 'grommet'
 import { Cli } from 'grommet-icons'
+import { useTranslation } from 'react-i18next'
 
 export const Logo: React.FC = () => {
+  const { t } = useTranslation()
+
   return (
-    <Button icon={<Cli />} hoverIndicator />
+    <Box direction="row">
+      <Button icon={<Cli />} hoverIndicator />
+      <Text alignSelf="center" weight="bold">
+        {t('app.name')}
+      </Text>
+    </Box>
   )
 }

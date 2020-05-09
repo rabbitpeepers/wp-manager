@@ -1,9 +1,14 @@
 {
   "app": {
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "name": "WP Manager"
   },
   "login": {
     "documentTitle": "Login",
-    "title": "Login"
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Submit",
+    "github": "Login with Github"
   }
 } 
