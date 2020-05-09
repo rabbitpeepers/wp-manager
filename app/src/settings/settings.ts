@@ -21,7 +21,7 @@ export const settings = {
     clientId: env.APP_GITHUB_OAUTH_CLIENT_ID,
     clientSecret: env.APP_GITHUB_OAUTH_CLIENT_SECRET,
     oauthCallback: env.APP_GITHUB_OAUTH_CALLBACK,
-    organizationId: env.APP_GITHUB_ORGANIZATION,
+    organizationIds: env.APP_GITHUB_ORGANIZATIONS,
     scope: ['read:user', 'read:org']
   },
   mongourl

@@ -14,8 +14,10 @@ interface GithubMembershipsOrgsResponse {
   }
 }
 
+const orgIds = settings.githubOAuth.organizationIds.split(',')
+
 export const VerifyMembership = async (accessToken: string): Promise<boolean> => {
-  console.log('Verifying if user is member of', settings.githubOAuth.organizationId)
+  console.log('Verifying if user is member of', settings.githubOAuth.organizationIds)
 
   const response = await axios({
     url: 'https://api.github.com/user/memberships/orgs',
@@ -28,9 +30,9 @@ export const VerifyMembership = async (accessToken: string): Promise<boolean> =>
 
   return data.
     filter(item => item.state === 'active').
-    filter(item => [
+    filter(item => orgIds.find(i => [
         item.organization.id,
         item.organization.login
-      ].indexOf(settings.githubOAuth.organizationId) !== -1
+      ].indexOf(i) !== -1)
     ).length > 0
 }
