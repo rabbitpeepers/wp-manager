@@ -2,5 +2,13 @@
   "private": true,
   "name": "wp-manager",
   "version": "0.1.0",
-  "workspaces": ["web", "app"]
-} 
+  "workspaces": [
+    "web",
+    "app",
+    "components/.dependencies/**/*",
+    "bit-components/{name}/**/*"
+  ],
+  "dependencies": {
+    "@bit/rabbitpeepers.wp-manager.path": "file:./bit-components/path"
+  }
+}
