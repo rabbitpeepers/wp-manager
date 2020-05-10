@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(passport.initialize())
 app.use(passport.session())
 
-passport.serializeUser(function(id: string, done) {
-  console.log('SAVE USER SESSION ID', id)
-  done(null, id)
+passport.serializeUser(function(user: {id: string}, done) {
+  console.log('SAVE USER SESSION ID', user.id)
+  done(null, user.id)
 })
 
 passport.deserializeUser(function(id, done) {

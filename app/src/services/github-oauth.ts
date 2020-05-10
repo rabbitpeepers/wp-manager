@@ -3,11 +3,13 @@ import OAuth2Strategy from 'passport-oauth2'
 import { Strategy as GithubStrategy } from 'passport-github2'
 import { settings } from 'settings/settings'
 import { VerifyMembership } from 'controllers/verify-membership'
+import { isUserProfile } from 'guard/isUserProfile'
+import { UserProfile } from 'types/UserProfile'
 
 const verify: OAuth2Strategy.VerifyFunction = async (
   accessToken: string,
   refreshToken: string,
-  profile: any,
+  profile: UserProfile,
   done: OAuth2Strategy.VerifyCallback
 ) => {
   const isMember = await VerifyMembership(accessToken)
@@ -17,7 +19,12 @@ const verify: OAuth2Strategy.VerifyFunction = async (
     return
   }
 
-  done(null, profile.id)
+  if (!isUserProfile(profile)) {
+    done(new Error('profile is not UserProfile object'))
+    return
+  }
+  
+  done(null, { id: profile.id })
 }
 
 passport.use(

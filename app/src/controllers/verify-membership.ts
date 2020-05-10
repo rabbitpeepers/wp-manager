@@ -1,16 +1,21 @@
 import axios from 'axios'
 import { settings } from 'settings/settings'
 
+type JSON_VALUE = string | object | number | null
+
 interface GithubMembershipsOrgsResponse {
   url: string
   state: 'active' | string
+  [key: string]: JSON_VALUE
   user: {
     login: string
     id: string
+    [key: string]: JSON_VALUE
   }
   organization: {
     login: string
     id: string
+    [key: string]: JSON_VALUE
   }
 }
 
