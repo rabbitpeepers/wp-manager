@@ -5,6 +5,7 @@ import { settings } from 'settings/settings'
 import { VerifyMembership } from 'controllers/verify-membership'
 import { isUserProfile } from 'guard/isUserProfile'
 import { UserProfile } from 'types/UserProfile'
+import * as ErrorCodes from 'const/ErrorCodes'
 
 const verify: OAuth2Strategy.VerifyFunction = async (
   accessToken: string,
@@ -15,7 +16,7 @@ const verify: OAuth2Strategy.VerifyFunction = async (
   const isMember = await VerifyMembership(accessToken)
 
   if (!isMember) {
-    done(new Error('User is not member of the organization'))
+    done(null, undefined, { code: ErrorCodes.ERR_USER_NOT_MEMBER_OF_ORG })
     return
   }
 
@@ -24,7 +25,7 @@ const verify: OAuth2Strategy.VerifyFunction = async (
     return
   }
   
-  done(null, { id: profile.id })
+  done(null, profile)
 }
 
 passport.use(
