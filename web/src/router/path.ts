@@ -1,9 +1,15 @@
-type makeFn = (args?: object | string) => string
+export type makeFn = (...args: string[]) => string
+export type AppRoute = string
+export type ExpressRoute = string
 
-interface Path {
-  [key: string]: [makeFn, string]
+export interface Path {
+  [key: string]: [makeFn, AppRoute, ExpressRoute]
 }
 
 export const path: Path = {
-  login: [() => '/', '/'],
+  login: [
+    ((status = '') => `/login/${status}`) as makeFn,
+    '/login',
+    '/login/:status?',
+  ],
 }
