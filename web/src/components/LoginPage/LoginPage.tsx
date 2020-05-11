@@ -1,12 +1,15 @@
 import { LoginForm } from 'src/components/LoginPage/LoginForm'
-import { Page } from 'src/components/Page/Page'
 import { LoginGitHub } from 'src/components/LoginPage/LoginGitHub'
+import { LoginRouteParams } from 'src/components/LoginPage/types'
+import { Page } from 'src/components/Page/Page'
 import React from 'react'
+import { RouteComponentProps } from '@reach/router'
 import { useTranslation } from 'react-i18next'
 import { Box, Heading } from 'grommet'
-import { RouteComponentProps } from '@reach/router'
 
-export const LoginPage: React.FC<RouteComponentProps> = () => {
+type LoginPage = React.FC<RouteComponentProps<LoginRouteParams>>
+
+export const LoginPage: LoginPage = () => {
   const { t } = useTranslation()
 
   return (

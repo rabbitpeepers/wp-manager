@@ -3,7 +3,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Github } from 'grommet-icons'
 
-export const LoginGitHub = () => {
+export const LoginGitHub: React.FC = () => {
   const { t } = useTranslation()
 
   return (

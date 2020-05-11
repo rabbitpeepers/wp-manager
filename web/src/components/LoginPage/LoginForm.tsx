@@ -8,6 +8,7 @@ import {
   TextInput,
 } from 'grommet'
 import { Secure } from 'grommet-icons'
+import { LoginFormStatusMessage } from 'src/components/LoginPage/LoginFormStatusMessage'
 
 type FormData = {
   username: string
@@ -32,6 +33,7 @@ export const LoginForm: React.FC = () => {
         <Secure size="large" />
       </Box>
       <Box pad="medium" align="stretch">
+        <LoginFormStatusMessage />
         <Form onSubmit={handleSubmit} onChange={handleChange} value={value}>
           <FormField label={t('login.username')} margin={{ vertical: 'medium' }}>
             <TextInput required name="username" />

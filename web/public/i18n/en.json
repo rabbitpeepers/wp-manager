@@ -9,6 +9,9 @@
     "username": "Username",
     "password": "Password",
     "submit": "Submit",
-    "github": "Login with Github"
+    "github": "Login with Github",
+    "status": {
+      "failed": "Failed to login. Check if your account is a member of the organization."
+    }
   }
 } 

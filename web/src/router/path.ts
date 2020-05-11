@@ -9,7 +9,7 @@ export interface Path {
 export const path: Path = {
   login: [
     ((status = '') => `/login/${status}`) as makeFn,
-    '/login',
+    '/login/:status',
     '/login/:status?',
   ],
 }
