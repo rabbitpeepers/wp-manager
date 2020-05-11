@@ -1029,7 +1029,7 @@
     to-fast-properties "^2.0.0"
 
 "@bit/rabbitpeepers.wp-manager.path@file:./bit-components/path":
-  version "0.1.5"
+  version "0.4.1"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"

@@ -1,4 +1,4 @@
-export type USER_ROLE = 'anonymous' | 'manager' | 'admin'
+export type USER_ROLE = 'manager' | 'admin'
 
 export type User = {
   role: USER_ROLE
