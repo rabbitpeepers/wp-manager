@@ -2,9 +2,10 @@ import passport from 'passport'
 import bodyParser from 'body-parser'
 import session from 'express-session'
 import { app } from 'services/app'
+import { settings } from 'settings/settings'
 
 app.use(session({
-  secret: 'abc1',
+  secret: settings.sessionSecret,
   resave: true,
   saveUninitialized: true
 }))

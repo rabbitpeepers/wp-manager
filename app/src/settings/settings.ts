@@ -17,6 +17,7 @@ fs.accessSync(publicPath, fs.constants.R_OK)
 export const settings = {
   port: env.APP_PORT || 8080,
   publicPath,
+  sessionSecret: env.APP_SESSION_SECRET_KEY,
   githubOAuth: {
     clientId: env.APP_GITHUB_OAUTH_CLIENT_ID,
     clientSecret: env.APP_GITHUB_OAUTH_CLIENT_SECRET,
