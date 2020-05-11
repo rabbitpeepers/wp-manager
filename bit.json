@@ -41,8 +41,5 @@
     "componentsDefaultDirectory": "bit-components/{name}",
     "packageManager": "yarn",
     "useWorkspaces": true,
-    "defaultScope": "rabbitpeepers.wp-manager",
-    "overrides": {
-        "rabbitpeepers.wp-manager/trimmer": {}
-    }
+    "defaultScope": "rabbitpeepers.wp-manager"
 }
