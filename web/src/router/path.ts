@@ -16,6 +16,7 @@ export interface Path {
   instances: PathItem
   domains: PathItem
   profile: PathItem
+  logout: PathItem
 }
 
 const staticPath = (p: string): PathItem => [
@@ -36,6 +37,7 @@ export const path: Path = {
   instances: staticPath('/instances'),
   domains: staticPath('/domains'),
   profile: staticPath('/profile'),
+  logout: staticPath('/logout'),
 }
 
 export const makeRoute = (p: PathItem, ...args: string[]): string => p[MAKE_ROUTE](...args)

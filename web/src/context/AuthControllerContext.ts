@@ -3,7 +3,7 @@ import { User } from 'src/types/User'
 
 export type AuthControllerContext = {
   authorize (user: User): Promise<void>
-  logout (): Promise<void>
+  logout (): Promise<boolean>
   validateSession (): Promise<User | null>
 }
 

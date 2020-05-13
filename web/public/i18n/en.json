@@ -18,6 +18,7 @@
     "submit": "Submit",
     "github": "Login with Github",
     "loggingIn": "Logging in...",
+    "loggingOut": "Logging out...",
     "status": {
       "failed": "Failed to login. Check if your account is a member of the organization."
     }

@@ -8,6 +8,7 @@ import { Redirect, Router } from '@reach/router'
 
 import { Dashboard } from 'src/components/Dashboard/Dashboard'
 import { LoginPage } from 'src/components/LoginPage/LoginPage'
+import { Logout } from 'src/components/Logout/Logout'
 import { PostLogin } from 'src/components/PostLogin/PostLogin'
 import React from 'react'
 import { useMe } from 'src/context/hook/useMe'
@@ -38,6 +39,7 @@ export const AppRouter: React.FC = () => {
   const authorized = me?.role ? (
     <>
       {path.dashboard[REACH_ROUTES].map((i) => <Dashboard key={i} path={i} />)}
+      {path.logout[REACH_ROUTES].map((i) => <Logout key={i} path={i} />)}
       {
         [
           '/login',

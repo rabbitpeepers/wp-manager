@@ -3,6 +3,7 @@ import React from 'react'
 import { SessionContext } from 'src/context/SessionContext'
 import { User } from 'src/types/User'
 import { fetchUserProfile } from 'src/lib/api/fetchUserProfile'
+import { logoutRequest } from 'src/lib/api/logoutRequest'
 import { useLocalStorageSession } from 'src/context/hook/useLocalStorageSession'
 
 export const useCreateAuthController = (): AuthControllerContext => {
@@ -21,7 +22,9 @@ export const useCreateAuthController = (): AuthControllerContext => {
   }, [initializeSession])
 
   const logout = React.useCallback(async () => {
+    await logoutRequest()
     flushSession()
+    return true
   }, [flushSession])
 
   const validateSession = React.useCallback(async (): Promise<User | null> => {
