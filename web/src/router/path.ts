@@ -12,6 +12,10 @@ export interface Path {
   login: PathItem
   postLogin: PathItem
   dashboard: PathItem
+  about: PathItem
+  instances: PathItem
+  domains: PathItem
+  profile: PathItem
 }
 
 const staticPath = (p: string): PathItem => [
@@ -28,6 +32,10 @@ export const path: Path = {
   ],
   postLogin: staticPath('/post-login'),
   dashboard: staticPath('/dashboard'),
+  about: staticPath('/about'),
+  instances: staticPath('/instances'),
+  domains: staticPath('/domains'),
+  profile: staticPath('/profile'),
 }
 
 export const makeRoute = (p: PathItem, ...args: string[]): string => p[MAKE_ROUTE](...args)

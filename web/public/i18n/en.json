@@ -1,7 +1,14 @@
 {
   "app": {
     "loading": "Loading...",
-    "name": "WP Manager"
+    "name": "WP Manager",
+    "logout": "Logout"
+  },
+  "menu": {
+    "about": "About",
+    "dashboard": "Dashboard",
+    "instances": "Instances",
+    "domains": "Domains"
   },
   "login": {
     "documentTitle": "Login",

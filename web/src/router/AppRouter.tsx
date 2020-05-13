@@ -23,7 +23,15 @@ export const AppRouter: React.FC = () => {
     <>
       {path.login[REACH_ROUTES].map((i) => <LoginPage key={i} path={i} />)}
       {path.postLogin[REACH_ROUTES].map((i) => <PostLogin key={i} path={i} />)}
-      {path.dashboard[REACH_ROUTES].map(getAppRedirect(path.login))}
+      {
+        [
+          ...path.dashboard[REACH_ROUTES],
+          ...path.instances[REACH_ROUTES],
+          ...path.domains[REACH_ROUTES],
+          ...path.profile[REACH_ROUTES],
+          ...path.about[REACH_ROUTES],
+        ].map(getAppRedirect(path.login))
+      }
     </>
   ) : null
 
@@ -36,6 +44,7 @@ export const AppRouter: React.FC = () => {
           ...path.postLogin[REACH_ROUTES],
         ].map(getAppRedirect(path.dashboard))
       }
+      <Redirect from="/" to={makeRoute(path.dashboard)} noThrow />
     </>
   ) : null
 
