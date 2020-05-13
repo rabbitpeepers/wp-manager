@@ -54,6 +54,8 @@ export const useCreateAuthController = (): AuthControllerContext => {
       } else {
         flushSession()
       }
+    } else {
+      flushSession()
     }
   }, [ls, validateSession, flushSession, state])
 
