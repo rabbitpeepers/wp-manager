@@ -21,7 +21,7 @@ export const PostLogin: React.FC<RouteComponentProps> = () => {
 
     const runValidation = async () => {
       const user = await validateSession()
-      navigate(makeRoute(user ? path.dasboard : path.login))
+      navigate(makeRoute(user ? path.dashboard : path.login))
     }
 
     runValidation()

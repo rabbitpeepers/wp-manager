@@ -9,7 +9,9 @@ export const EXPRESS_ROUTE = 2
 type PathItem = [makeFn, AppRoute[], ExpressRoute]
 
 export interface Path {
-  [key: string]: PathItem
+  login: PathItem
+  postLogin: PathItem
+  dashboard: PathItem
 }
 
 const staticPath = (p: string): PathItem => [
