@@ -18,7 +18,7 @@ export const settings = {
   port: env.APP_PORT || 8080,
   publicPath,
   sessionSecret: env.APP_SESSION_SECRET_KEY,
-  webUrl: env.APP_WEB_URL,
+  webHost: env.APP_WEB_HOST,
   githubOAuth: {
     clientId: env.APP_GITHUB_OAUTH_CLIENT_ID,
     clientSecret: env.APP_GITHUB_OAUTH_CLIENT_SECRET,

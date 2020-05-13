@@ -7,7 +7,7 @@ import { settings } from 'settings/settings'
 import { User } from 'models/User'
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: settings.webHost,
   credentials: true
 }))
 

@@ -5,7 +5,7 @@ import { settings } from 'settings/settings'
 app.get(
   '/auth/github/callback', 
   passport.authenticate('github', {
-    failureRedirect: `${settings.webUrl}/login/failed`,
-    successRedirect: `${settings.webUrl}/post-login`,
+    failureRedirect: `${settings.webHost}/login/failed`,
+    successRedirect: `${settings.webHost}/post-login`,
   })
 )
