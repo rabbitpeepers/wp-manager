@@ -30,7 +30,7 @@ export const AppSidebar: React.FC = () => {
       footer={(
         <SidebarButton
           icon={<Icons.Help />}
-          href={makeRoute(path.about)}
+          to={makeRoute(path.about)}
           label={t('menu.about')}
           hoverIndicator
         />
