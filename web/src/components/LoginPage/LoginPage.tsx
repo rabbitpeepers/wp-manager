@@ -1,3 +1,5 @@
+import { Box, Heading } from 'grommet'
+
 import { LoginForm } from 'src/components/LoginPage/LoginForm'
 import { LoginGitHub } from 'src/components/LoginPage/LoginGitHub'
 import { LoginRouteParams } from 'src/components/LoginPage/types'
@@ -5,7 +7,6 @@ import { Page } from 'src/components/Page/Page'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { useTranslation } from 'react-i18next'
-import { Box, Heading } from 'grommet'
 
 type LoginPage = React.FC<RouteComponentProps<LoginRouteParams>>
 

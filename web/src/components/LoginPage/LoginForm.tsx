@@ -1,5 +1,3 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
 import {
   Box,
   Button,
@@ -7,8 +5,11 @@ import {
   FormField,
   TextInput,
 } from 'grommet'
-import { Secure } from 'grommet-icons'
+
 import { LoginFormStatusMessage } from 'src/components/LoginPage/LoginFormStatusMessage'
+import React from 'react'
+import { Secure } from 'grommet-icons'
+import { useTranslation } from 'react-i18next'
 
 type FormData = {
   username: string

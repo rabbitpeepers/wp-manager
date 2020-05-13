@@ -1,6 +1,6 @@
+import { LS_SESSION } from 'src/const/LocalStorage'
 import React from 'react'
 import { Session } from 'src/context/SessionContext'
-import { LS_SESSION } from 'src/const/LocalStorage'
 
 export const useLocalStorageSession = () => {
   const get = React.useCallback((): Session | null => {

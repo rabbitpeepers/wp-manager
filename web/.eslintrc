@@ -73,6 +73,12 @@
     "react/jsx-wrap-multilines": "warn",
     "react/destructuring-assignment": "off",
     "@typescript-eslint/semi": ["error", "never"],
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "sort-imports": ["error", {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+    }]
   }
 } 

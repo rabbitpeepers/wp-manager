@@ -1,5 +1,6 @@
-import React from 'react'
 import { Session, SessionContext, SessionContextState } from 'src/context/SessionContext'
+
+import React from 'react'
 
 export const useCreateSession = (): SessionContext => {
   const [state, setState] = React.useState<SessionContextState>('initializing')
@@ -11,8 +12,8 @@ export const useCreateSession = (): SessionContext => {
   }, [setSession, setState])
 
   const flushSession = React.useCallback(() => {
-    setSession({})
-  }, [setSession])
+    initializeSession({})
+  }, [initializeSession])
 
   return {
     state,

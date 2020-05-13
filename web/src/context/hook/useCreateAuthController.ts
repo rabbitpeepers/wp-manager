@@ -1,7 +1,8 @@
-import React from 'react'
 import { AuthControllerContext } from 'src/context/AuthControllerContext'
+import React from 'react'
 import { SessionContext } from 'src/context/SessionContext'
 import { User } from 'src/types/User'
+import { fetchUserProfile } from 'src/lib/api/fetchUserProfile'
 import { useLocalStorageSession } from 'src/context/hook/useLocalStorageSession'
 
 export const useCreateAuthController = (): AuthControllerContext => {
@@ -23,9 +24,15 @@ export const useCreateAuthController = (): AuthControllerContext => {
     flushSession()
   }, [flushSession])
 
-  const validateSession = React.useCallback(async () => {
-    /* validateSession */
-  }, [])
+  const validateSession = React.useCallback(async (): Promise<User | null> => {
+    const user = await fetchUserProfile()
+    if (user) {
+      authorize(user)
+    } else {
+      logout()
+    }
+    return user
+  }, [authorize, logout])
 
   // Keep session in sync with LS
   React.useEffect(() => {
@@ -40,9 +47,13 @@ export const useCreateAuthController = (): AuthControllerContext => {
 
     const lsSession = ls.get()
     if (lsSession) {
-      initializeSession(lsSession)
+      if (lsSession.user) {
+        validateSession()
+      } else {
+        flushSession()
+      }
     }
-  }, [ls, initializeSession, state])
+  }, [ls, validateSession, flushSession, state])
 
   return {
     authorize,

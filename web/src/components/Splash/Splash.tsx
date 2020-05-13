@@ -1,10 +1,11 @@
-import React from 'react'
 import {
   Box,
   Main,
   Meter,
   Text,
 } from 'grommet'
+
+import React from 'react'
 
 export const Splash: React.FC = () => {
   const [value, setValue] = React.useState(0)
@@ -21,7 +22,7 @@ export const Splash: React.FC = () => {
   const label = React.useMemo(() => (completed ? 'Loading...' : ''), [completed])
 
   return (
-    <Main pad="large" justify="center">
+    <Main pad="large" justify="center" height="100%">
       <Box width="100px" height="100px" alignSelf="center">
         <Meter
           size="large"

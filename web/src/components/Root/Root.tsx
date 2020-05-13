@@ -1,8 +1,8 @@
 import { Grommet } from 'grommet'
-import { theme } from 'src/utils/theme'
 import React from 'react'
-import { Splash } from 'src/components/Splash/Splash'
 import { Session } from 'src/components/Session/Session'
+import { Splash } from 'src/components/Splash/Splash'
+import { theme } from 'src/utils/theme'
 
 export const Root: React.FC = ({ children }) => (
   <React.Suspense fallback={<Splash />}>

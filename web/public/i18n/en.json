@@ -10,6 +10,7 @@
     "password": "Password",
     "submit": "Submit",
     "github": "Login with Github",
+    "loggingIn": "Logging in...",
     "status": {
       "failed": "Failed to login. Check if your account is a member of the organization."
     }

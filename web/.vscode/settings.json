@@ -1,6 +1,4 @@
 {
-  "typescript.tsdk": ".vscode/pnpify/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "files.associations": {
     "*.jsx": "javascriptreact"
   },

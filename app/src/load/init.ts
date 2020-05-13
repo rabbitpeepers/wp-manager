@@ -1,9 +1,15 @@
 import passport from 'passport'
 import bodyParser from 'body-parser'
 import session from 'express-session'
+import cors from 'cors'
 import { app } from 'services/app'
 import { settings } from 'settings/settings'
 import { User } from 'models/User'
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}))
 
 app.use(session({
   secret: settings.sessionSecret,
