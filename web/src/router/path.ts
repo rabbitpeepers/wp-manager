@@ -6,7 +6,7 @@ export const MAKE_ROUTE = 0
 export const REACH_ROUTES = 1
 export const EXPRESS_ROUTE = 2
 
-type PathItem = [makeFn, AppRoute[], ExpressRoute]
+export type PathItem = [makeFn, AppRoute[], ExpressRoute]
 
 export interface Path {
   login: PathItem
