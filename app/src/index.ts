@@ -1,4 +1,5 @@
 import 'load/init'
+import 'load/mongo'
 import 'load/services'
 import 'load/api'
 

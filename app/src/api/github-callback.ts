@@ -5,6 +5,6 @@ app.get(
   '/auth/github/callback', 
   passport.authenticate('github', {
     failureRedirect: '/login/failed',
-    successRedirect: '/post-login'
+    successRedirect: '/post-login',
   })
 )

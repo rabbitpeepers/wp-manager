@@ -33,11 +33,19 @@ export const VerifyMembership = async (accessToken: string): Promise<boolean> =>
 
   const data = response.data as GithubMembershipsOrgsResponse[]
 
-  return data.
+  const verified = data.
     filter(item => item.state === 'active').
     filter(item => orgIds.find(i => [
         item.organization.id,
         item.organization.login
       ].indexOf(i) !== -1)
     ).length > 0
+
+  if (verified) {
+    console.log('User is a member')
+  } else {
+    console.log('User is not a member of organization')
+  }
+
+  return verified
 }

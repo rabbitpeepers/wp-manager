@@ -6,11 +6,15 @@ import { VerifyMembership } from 'controllers/verify-membership'
 import { isUserProfile } from 'guard/isUserProfile'
 import { UserProfile } from 'types/UserProfile'
 import * as ErrorCodes from 'const/ErrorCodes'
+import { Request } from 'express'
+import { OAuth2Login } from 'controllers/oauth2-login'
 
-const verify: OAuth2Strategy.VerifyFunction = async (
+// Validate membership
+const verify: OAuth2Strategy.VerifyFunctionWithRequest = async (
+  req: Request,
   accessToken: string,
   refreshToken: string,
-  profile: UserProfile,
+  githubProfile: UserProfile,
   done: OAuth2Strategy.VerifyCallback
 ) => {
   const isMember = await VerifyMembership(accessToken)
@@ -20,12 +24,17 @@ const verify: OAuth2Strategy.VerifyFunction = async (
     return
   }
 
-  if (!isUserProfile(profile)) {
+  if (!isUserProfile(githubProfile)) {
     done(new Error('profile is not UserProfile object'))
     return
   }
   
-  done(null, profile)
+  try {
+    await OAuth2Login(req, accessToken, refreshToken, githubProfile, done)
+  } catch (ex) {
+    console.error(ex)
+    done(ex)
+  }
 }
 
 passport.use(
@@ -33,6 +42,7 @@ passport.use(
     clientID: settings.githubOAuth.clientId,
     clientSecret: settings.githubOAuth.clientSecret,
     callbackURL: settings.githubOAuth.oauthCallback,
+    passReqToCallback: true
   },
   verify
 ))
