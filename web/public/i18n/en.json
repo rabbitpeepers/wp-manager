@@ -2,7 +2,8 @@
   "app": {
     "loading": "Loading...",
     "name": "WP Manager",
-    "logout": "Logout"
+    "logout": "Logout",
+    "unknownError": "unknownError"
   },
   "menu": {
     "about": "About",
