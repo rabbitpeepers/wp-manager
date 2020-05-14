@@ -22,12 +22,15 @@ type Props = {
   setError: React.Dispatch<React.SetStateAction<string>>
 }
 
+const loginURL = `${settings.api.url}${OAUTH2_GITHUB}`
+
 export const LoginGitHub: React.FC<Props> = ({ setError }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
-  const handleClick = React.useCallback(() => {
-    openPopup(`${settings.api.url}${OAUTH2_GITHUB}`, t('login.github'), 550, 650)
+  const handleClick = React.useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault()
+    openPopup(loginURL, t('login.github'), 550, 650)
 
     const receiveMessage = (message: MessageEvent) => {
       const data = message.data as postMessageInfo
@@ -50,6 +53,7 @@ export const LoginGitHub: React.FC<Props> = ({ setError }) => {
   return (
     <Button
       onClick={handleClick}
+      href={loginURL}
       size="large"
       label={t('login.github')}
       icon={<Github />}
