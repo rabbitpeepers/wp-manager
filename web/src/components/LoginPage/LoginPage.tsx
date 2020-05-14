@@ -12,6 +12,7 @@ type LoginPage = React.FC<RouteComponentProps<LoginRouteParams>>
 
 export const LoginPage: LoginPage = () => {
   const { t } = useTranslation()
+  const [error, setError] = React.useState('')
 
   return (
     <Page title={t('login.documentTitle')} rootProps={{ background: 'light-1' }}>
@@ -19,9 +20,9 @@ export const LoginPage: LoginPage = () => {
         <Heading textAlign="center">
           {t('login.title')}
         </Heading>
-        <LoginForm />
+        <LoginForm error={error} />
         <Box margin="medium">
-          <LoginGitHub />
+          <LoginGitHub setError={setError} />
         </Box>
       </Box>
     </Page>

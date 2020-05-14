@@ -3,7 +3,7 @@
     "loading": "Loading...",
     "name": "WP Manager",
     "logout": "Logout",
-    "unknownError": "unknownError"
+    "unknownError": "Unknown error"
   },
   "menu": {
     "about": "About",
@@ -22,7 +22,8 @@
     "loggingOut": "Logging out...",
     "status": {
       "failed": "Failed to login. Check if your account is a member of the organization."
-    }
+    },
+    "userNotMember": "Check if your account is a member of the organization."
   },
   "dashboard": {
     "title": "Dashboard"

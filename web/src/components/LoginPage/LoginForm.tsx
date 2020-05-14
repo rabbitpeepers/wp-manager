@@ -16,7 +16,11 @@ type FormData = {
   password: string
 }
 
-export const LoginForm: React.FC = () => {
+type Props = {
+  error?: string
+}
+
+export const LoginForm: React.FC<Props> = ({ error }) => {
   const { t } = useTranslation()
   const [value, setValue] = React.useState<FormData>({
     password: '',
@@ -34,7 +38,7 @@ export const LoginForm: React.FC = () => {
         <Secure size="large" />
       </Box>
       <Box pad="medium" align="stretch">
-        <LoginFormStatusMessage />
+        <LoginFormStatusMessage message={error} />
         <Form onSubmit={handleSubmit} onChange={handleChange} value={value}>
           <FormField label={t('login.username')} margin={{ vertical: 'medium' }}>
             <TextInput required name="username" />

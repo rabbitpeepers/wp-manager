@@ -12,7 +12,17 @@ import { settings } from 'src/settings/settings'
 import { useNavigate } from '@reach/router'
 import { useTranslation } from 'react-i18next'
 
-export const LoginGitHub: React.FC = () => {
+type postMessageInfo = {
+  type: 'wp_manager_oauth_message'
+  action: 'success' | 'failed'
+  message?: string
+}
+
+type Props = {
+  setError: React.Dispatch<React.SetStateAction<string>>
+}
+
+export const LoginGitHub: React.FC<Props> = ({ setError }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -20,13 +30,22 @@ export const LoginGitHub: React.FC = () => {
     openPopup(`${settings.api.url}${OAUTH2_GITHUB}`, t('login.github'), 550, 650)
 
     const receiveMessage = (message: MessageEvent) => {
-      if (message.data === 'successAndNavigate') {
-        window.removeEventListener('message', receiveMessage)
+      const data = message.data as postMessageInfo
+
+      if (data.type !== 'wp_manager_oauth_message') {
+        return
+      }
+
+      window.removeEventListener('message', receiveMessage)
+
+      if (data.action === 'success') {
         navigate(makeRoute(path.postLogin))
+      } else {
+        setError(data.message || 'Unkown error')
       }
     }
     window.addEventListener('message', receiveMessage, false)
-  }, [navigate, t])
+  }, [navigate, t, setError])
 
   return (
     <Button
