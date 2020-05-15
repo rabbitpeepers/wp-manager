@@ -20,12 +20,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(passport.initialize())
 app.use(passport.session())
 
-passport.serializeUser(function(user: {id: string}, done) {
+passport.serializeUser((user: { id: string }, done) => {
   done(null, user.id)
 })
 
 passport.deserializeUser(async (id, done) => {
   const user = await User.findById(id)
-  console.log(user)
   done(null, user)
 })
