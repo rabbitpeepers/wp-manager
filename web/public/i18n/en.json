@@ -29,9 +29,22 @@
     "title": "Dashboard"
   },
   "instances": {
-    "title": "Instances"
+    "title": "Instances",
+    "details": "Details",
+    "create": "Create",
+    "table": {
+      "id": "Id",
+      "domain": "Domain",
+      "status": "Status",
+      "date": "Date",
+      "owner": "Owner"
+    }
   },
   "createInstance": {
-    "title": "Create instance"
+    "title": "Create instance",
+    "selectDomain": "Select domain",
+    "selectDomainPlaceholder": ".domain.com",
+    "selectName": "Sub domain name",
+    "selectNamePlaceholder": "subdomain"
   }
 } 

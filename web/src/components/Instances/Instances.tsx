@@ -27,7 +27,7 @@ export const Instances: React.FC<RouteComponentProps> = () => {
           icon={<Icons.Add />}
           alignSelf="center"
           size="large"
-          label="Create"
+          label={t('instances.create')}
           primary
         />
       </Box>
