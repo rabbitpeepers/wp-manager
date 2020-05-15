@@ -52,7 +52,7 @@ export const useCreateAuthController = (): AuthControllerContext => {
 
   // Keep session in sync with LS
   React.useEffect(() => {
-    if (state === 'ready') {
+    if (state === 'ready' && session) {
       ls.save(session)
     }
   }, [ls, session, state])

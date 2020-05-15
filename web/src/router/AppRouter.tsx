@@ -6,7 +6,9 @@ import {
 } from 'src/router/path'
 import { Redirect, Router } from '@reach/router'
 
+import { CreateInstance } from 'src/components/CreateInstance/CreateInstance'
 import { Dashboard } from 'src/components/Dashboard/Dashboard'
+import { Instances } from 'src/components/Instances/Instances'
 import { LoginPage } from 'src/components/LoginPage/LoginPage'
 import { Logout } from 'src/components/Logout/Logout'
 import { PostLogin } from 'src/components/PostLogin/PostLogin'
@@ -39,6 +41,8 @@ export const AppRouter: React.FC = () => {
   const authorized = me?.role ? (
     <>
       {path.dashboard[REACH_ROUTES].map((i) => <Dashboard key={i} path={i} />)}
+      {path.instances[REACH_ROUTES].map((i) => <Instances key={i} path={i} />)}
+      {path.instancesCreate[REACH_ROUTES].map((i) => <CreateInstance key={i} path={i} />)}
       {path.logout[REACH_ROUTES].map((i) => <Logout key={i} path={i} />)}
       {
         [

@@ -14,6 +14,7 @@ export interface Path {
   dashboard: PathItem
   about: PathItem
   instances: PathItem
+  instancesCreate: PathItem
   domains: PathItem
   profile: PathItem
   logout: PathItem
@@ -36,6 +37,7 @@ export const path: Path = {
   dashboard: staticPath('/dashboard'),
   about: staticPath('/about'),
   instances: staticPath('/instances'),
+  instancesCreate: staticPath('/instances/create'),
   domains: staticPath('/domains'),
   profile: staticPath('/profile'),
   logout: staticPath('/logout'),

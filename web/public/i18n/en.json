@@ -27,5 +27,11 @@
   },
   "dashboard": {
     "title": "Dashboard"
+  },
+  "instances": {
+    "title": "Instances"
+  },
+  "createInstance": {
+    "title": "Create instance"
   }
 } 

@@ -7,8 +7,8 @@ export const useCreateSession = (): SessionContext => {
   const [session, setSession] = React.useState<Session>({})
 
   const initializeSession = React.useCallback((newSession: Session) => {
-    setState('ready')
     setSession(newSession)
+    setState('ready')
   }, [setSession, setState])
 
   const flushSession = React.useCallback(() => {
