@@ -13,7 +13,6 @@ type OAuth2LoginFn = (
 ) => Promise<void>
 
 const OAuth2CreateAccount: OAuth2LoginFn = async (req, accessToken, refreshToken, profile, done) => {
-  console.log('Creating an account...')
   const newUser = new User({
     displayName: profile.displayName,
     username: profile.username,
@@ -23,7 +22,7 @@ const OAuth2CreateAccount: OAuth2LoginFn = async (req, accessToken, refreshToken
   })
 
   await newUser.save()
-  console.log('Creating an identity...')
+
   const newIdentity = new Identity({
     providerId: profile.id,
     uid: newUser.id,
@@ -32,28 +31,22 @@ const OAuth2CreateAccount: OAuth2LoginFn = async (req, accessToken, refreshToken
   })
 
   await newIdentity.save()
-  console.log('Loggin in...')
+
   req.logIn(newUser, () => {
-    console.log('Logged in!')
     done(null, newUser)
   })
 }
 
 export const OAuth2Login: OAuth2LoginFn = async (req, accessToken, refreshToken, profile, done) => {
-  console.log('Fetching identity...')
   const identity = await Identity.findOne({
     providerId: profile.id
   })
 
   if (!identity) {
-    console.log('No identity found')
     return OAuth2CreateAccount(req, accessToken, refreshToken, profile, done)
   } else {
-    console.log('Have identity! Look up for a user', identity.uid)
     const user = await User.findById(identity.uid)
-    console.log('Have user', user.displayName)
     req.logIn(user, () => {
-      console.log('Logged in!')
       done(null, user)
     })
   }

@@ -36,7 +36,7 @@ app.get('/auth/github/callback', (req, res, next) => {
       res.status(401)
       res.send(makeResult(failedRedirect, {
         action: 'failed',
-        message:  err,
+        message:  err.message,
         type: 'wp_manager_oauth_message',
       }))
       return
