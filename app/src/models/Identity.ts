@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 export interface Indentity {
   providerId: string
-  uid: string
+  uid: mongoose.Types.ObjectId
   provider: string
   providerData: object
 }
@@ -12,7 +12,7 @@ export type MongoIndentityModel = mongoose.Model<MongoIndentityDocument>
 
 export const IdentitySchema = new mongoose.Schema({
   providerId: String,
-  uid: String,
+  uid: mongoose.Types.ObjectId,
   provider: String,
   providerData: Object,
 }, {

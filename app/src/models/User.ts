@@ -16,7 +16,11 @@ export const UserSchema = new mongoose.Schema({
   username: String,
   email: String,
   photoURL: String,
-  role: String
+  role: {
+    type: String,
+    enum : ['manager','admin'],
+    default: 'manager'
+  },
 })
 
 export const User = mongoose.model<MongoUserDocument>('User', UserSchema)
