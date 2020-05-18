@@ -9,6 +9,7 @@ import { Redirect, Router } from '@reach/router'
 import { CreateInstance } from 'src/components/CreateInstance/CreateInstance'
 import { Dashboard } from 'src/components/Dashboard/Dashboard'
 import { Domains } from 'src/components/Domains/Domains'
+import { CreateDomain } from 'src/components/CreateDomain/CreateDomain'
 import { Instances } from 'src/components/Instances/Instances'
 import { LoginPage } from 'src/components/LoginPage/LoginPage'
 import { Logout } from 'src/components/Logout/Logout'
@@ -35,6 +36,7 @@ export const AppRouter: React.FC = () => {
           ...path.profile[REACH_ROUTES],
           ...path.about[REACH_ROUTES],
           ...path.instancesCreate[REACH_ROUTES],
+          ...path.domainsCreate[REACH_ROUTES],
         ].map(getAppRedirect(path.login))
       }
     </>
@@ -46,6 +48,7 @@ export const AppRouter: React.FC = () => {
       {path.instances[REACH_ROUTES].map((i) => <Instances key={i} path={i} />)}
       {path.domains[REACH_ROUTES].map((i) => <Domains key={i} path={i} />)}
       {path.instancesCreate[REACH_ROUTES].map((i) => <CreateInstance key={i} path={i} />)}
+      {path.domainsCreate[REACH_ROUTES].map((i) => <CreateDomain key={i} path={i} />)}
       {path.logout[REACH_ROUTES].map((i) => <Logout key={i} path={i} />)}
       {
         [

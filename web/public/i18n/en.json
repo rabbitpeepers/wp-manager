@@ -43,7 +43,7 @@
     }
   },
   "createInstance": {
-    "title": "Create instance",
+    "title": "Create new instance",
     "selectDomain": "Select domain",
     "selectDomainPlaceholder": ".domain.com",
     "selectName": "Sub domain name",
@@ -63,6 +63,15 @@
       "status": "Status",
       "date": "Date",
       "owner": "Owner"
+    }
+  },
+  "createDomain": {
+    "title": "Create new domain",
+    "selectName": "Domain name",
+    "selectNamePlaceholder": "domain.com",
+    "submit": "Create domain",
+    "errors": {
+      "name": "This is required. Only domain name is accepted."
     }
   }
 } 

@@ -33,12 +33,14 @@ export const AppNavigation: React.FC = () => {
         to={makeRoute(path.instances)}
         hoverIndicator
       />
-      <SidebarButton
-        icon={<Icons.Domain />}
-        label={t('menu.domains')}
-        to={makeRoute(path.domains)}
-        hoverIndicator
-      />
+      {me.role === 'admin' ? (
+        <SidebarButton
+          icon={<Icons.Domain />}
+          label={t('menu.domains')}
+          to={makeRoute(path.domains)}
+          hoverIndicator
+        />
+      ) : null}
     </Nav>
   )
 }
