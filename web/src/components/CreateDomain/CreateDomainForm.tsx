@@ -17,7 +17,7 @@ import { useSubmit } from 'src/components/CreateDomain/useSubmit'
 import { useTranslation } from 'react-i18next'
 
 export const CreateDomainForm: React.FC = () => {
-  const cancelProps = useHandleHref(path.instances)
+  const cancelProps = useHandleHref(path.domains)
   const { control, handleSubmit, errors } = useForm<DomainFormData>()
   const { t } = useTranslation()
   const { execute, loading, error } = useSubmit()

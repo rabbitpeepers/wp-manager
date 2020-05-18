@@ -1,3 +1,4 @@
+import express from 'express'
 import passport from 'passport'
 import bodyParser from 'body-parser'
 import session from 'express-session'
@@ -10,6 +11,7 @@ app.use(cors({
   origin: settings.webHost,
   credentials: true
 }))
+app.use(express.json())
 
 app.use(session({
   secret: settings.sessionSecret,

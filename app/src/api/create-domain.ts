@@ -14,7 +14,7 @@ app.post('/rest/domains/create', async (req, res) => {
   }
 
   const payload: CreateDomainPayload = {
-    name: req.params.name,
+    name: req.body.name,
   }
 
   if (!isCreateDomainPayload(payload)) {

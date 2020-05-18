@@ -6,10 +6,10 @@ import {
 } from 'src/router/path'
 import { Redirect, Router } from '@reach/router'
 
+import { CreateDomain } from 'src/components/CreateDomain/CreateDomain'
 import { CreateInstance } from 'src/components/CreateInstance/CreateInstance'
 import { Dashboard } from 'src/components/Dashboard/Dashboard'
 import { Domains } from 'src/components/Domains/Domains'
-import { CreateDomain } from 'src/components/CreateDomain/CreateDomain'
 import { Instances } from 'src/components/Instances/Instances'
 import { LoginPage } from 'src/components/LoginPage/LoginPage'
 import { Logout } from 'src/components/Logout/Logout'

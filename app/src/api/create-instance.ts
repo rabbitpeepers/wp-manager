@@ -14,8 +14,8 @@ app.post('/rest/instances/create', async (req, res) => {
   }
 
   const payload: CreateInstancePayload = {
-    domainId: req.params.domainId,
-    name: req.params.name,
+    domainId: req.body.domainId,
+    name: req.body.name,
   }
 
   if (!isCreateInstancePayload(payload)) {

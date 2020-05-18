@@ -1,10 +1,9 @@
-import { CreateDomainPayload, ListDomainsResponse } from 'src/types/Domain'
-
 import { API_CREATE_DOMAIN } from 'src/const/API'
 import { AuthorizationError } from 'src/utils/AuthorizationError'
+import { CreateDomainPayload } from 'src/types/Domain'
 import { settings } from 'src/settings/settings'
 
-export const createDomainRequest = async (payload: CreateDomainPayload): Promise<ListDomainsResponse | null> => {
+export const createDomainRequest = async (payload: CreateDomainPayload): Promise<boolean> => {
   const response = await fetch(`${settings.api.url}${API_CREATE_DOMAIN}`, {
     mode: 'cors',
     credentials: 'include',
@@ -28,5 +27,5 @@ export const createDomainRequest = async (payload: CreateDomainPayload): Promise
     throw new Error(`HTTP[${response.status}] ${await response.text()}`)
   }
 
-  return await response.json() as ListDomainsResponse
+  return true
 }

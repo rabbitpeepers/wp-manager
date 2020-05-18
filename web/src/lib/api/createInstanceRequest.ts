@@ -1,10 +1,9 @@
-import { CreateInstancePayload, ListIntancesResponse } from 'src/types/Instance'
-
 import { API_CREATE_INSTANCE } from 'src/const/API'
 import { AuthorizationError } from 'src/utils/AuthorizationError'
+import { CreateInstancePayload } from 'src/types/Instance'
 import { settings } from 'src/settings/settings'
 
-export const createInstanceRequest = async (payload: CreateInstancePayload): Promise<ListIntancesResponse | null> => {
+export const createInstanceRequest = async (payload: CreateInstancePayload): Promise<boolean> => {
   const response = await fetch(`${settings.api.url}${API_CREATE_INSTANCE}`, {
     mode: 'cors',
     credentials: 'include',
@@ -28,5 +27,5 @@ export const createInstanceRequest = async (payload: CreateInstancePayload): Pro
     throw new Error(`HTTP[${response.status}] ${await response.text()}`)
   }
 
-  return await response.json() as ListIntancesResponse
+  return true
 }
