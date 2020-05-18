@@ -53,5 +53,16 @@
       "name": "This is required. Only sub-domain name is accepted.",
       "domain": "This is required."
     }
+  },
+  "domains": {
+    "title": "Domains",
+    "create": "Create new domain",
+    "table": {
+      "id": "ID",
+      "name": "Name",
+      "status": "Status",
+      "date": "Date",
+      "owner": "Owner"
+    }
   }
 } 

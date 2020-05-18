@@ -8,6 +8,7 @@ import { Redirect, Router } from '@reach/router'
 
 import { CreateInstance } from 'src/components/CreateInstance/CreateInstance'
 import { Dashboard } from 'src/components/Dashboard/Dashboard'
+import { Domains } from 'src/components/Domains/Domains'
 import { Instances } from 'src/components/Instances/Instances'
 import { LoginPage } from 'src/components/LoginPage/LoginPage'
 import { Logout } from 'src/components/Logout/Logout'
@@ -43,6 +44,7 @@ export const AppRouter: React.FC = () => {
     <>
       {path.dashboard[REACH_ROUTES].map((i) => <Dashboard key={i} path={i} />)}
       {path.instances[REACH_ROUTES].map((i) => <Instances key={i} path={i} />)}
+      {path.domains[REACH_ROUTES].map((i) => <Domains key={i} path={i} />)}
       {path.instancesCreate[REACH_ROUTES].map((i) => <CreateInstance key={i} path={i} />)}
       {path.logout[REACH_ROUTES].map((i) => <Logout key={i} path={i} />)}
       {

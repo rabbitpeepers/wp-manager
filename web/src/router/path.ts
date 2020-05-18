@@ -16,6 +16,7 @@ export interface Path {
   instances: PathItem
   instancesCreate: PathItem
   domains: PathItem
+  domainsCreate: PathItem
   profile: PathItem
   logout: PathItem
   applicationFailed: PathItem
@@ -39,6 +40,7 @@ export const path: Path = {
   instances: staticPath('/instances'),
   instancesCreate: staticPath('/instances/create'),
   domains: staticPath('/domains'),
+  domainsCreate: staticPath('/domains/create'),
   profile: staticPath('/profile'),
   logout: staticPath('/logout'),
   applicationFailed: staticPath('/application-failed'),
