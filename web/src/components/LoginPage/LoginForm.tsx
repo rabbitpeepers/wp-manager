@@ -27,9 +27,7 @@ export const LoginForm: React.FC<Props> = ({ error }) => {
     username: '',
   })
 
-  const handleSubmit = React.useCallback(() => {
-    console.log('Submit')
-  }, [])
+  const handleSubmit = React.useCallback(() => {}, [])
   const handleChange = React.useCallback((nextValue) => setValue(nextValue), [setValue])
 
   return (

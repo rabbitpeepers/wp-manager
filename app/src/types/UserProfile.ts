@@ -8,6 +8,7 @@ export interface UserProfile {
   emails: UserProfileArrayOfValues
   photos: UserProfileArrayOfValues
   provider: string
+  createdAt: string
   _raw: string
   _json: {
     [key: string]: string | object | number | null

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-interface MongoUser {
+export interface MongoUser {
   displayName: string
   username: string
   email: string
@@ -16,6 +16,7 @@ export const UserSchema = new mongoose.Schema({
   username: String,
   email: String,
   photoURL: String,
+  createdAt: { type: Date, default: Date.now },
   role: {
     type: String,
     enum : ['manager','admin'],

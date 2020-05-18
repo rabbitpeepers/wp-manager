@@ -1,28 +1,68 @@
-import { Box, Button, Form } from 'grommet'
+import { Alert, AlertSeverity } from 'src/components/Alert/Alert'
+import {
+  Box,
+  Button,
+  Form,
+  Text,
+} from 'grommet'
+import { ErrorMessage, useForm } from 'react-hook-form'
 
 import { CreateInstanceDomain } from 'src/components/CreateInstance/CreateInstanceDomain'
 import { CreateInstanceName } from 'src/components/CreateInstance/CreateInstanceName'
+import { InstanceFormData } from 'src/components/CreateInstance/InstanceFormDataType'
 import React from 'react'
 import { path } from 'src/router/path'
+import { useAuthorizationErrorEffect } from 'src/lib/useAuthorizationErrorEffect'
 import { useHandleHref } from 'src/components/common/useHandleHref'
+import { useSubmit } from 'src/components/CreateInstance/useSubmit'
+import { useTranslation } from 'react-i18next'
 
 export const CreateInstanceForm: React.FC = () => {
   const cancelProps = useHandleHref(path.instances)
+  const { control, handleSubmit, errors } = useForm<InstanceFormData>()
+  const { t } = useTranslation()
+  const { execute, loading, error } = useSubmit()
+
+  const onSubmit = React.useCallback((data: InstanceFormData) => {
+    execute(data)
+  }, [execute])
+
+  // Handle 401
+  useAuthorizationErrorEffect(error)
 
   return (
     <Box width="large" background="light-1" pad="large">
-      <Form>
-        <CreateInstanceName />
-        <CreateInstanceDomain />
+      {error ? (
+        <Alert severity={AlertSeverity.ERROR}>
+          {error.message}
+        </Alert>
+      ) : null}
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <CreateInstanceName disabled={loading} control={control} />
+        <ErrorMessage errors={errors} name="name" message={t('createInstance.errors.name')} />
+        <CreateInstanceDomain disabled={loading} control={control} />
+        <ErrorMessage errors={errors} name="domainId" message={t('createInstance.errors.domain')} />
         <Box margin={{ top: 'medium' }} flex direction="row">
           <Button
-            label="Cancel"
+            label={t('app.cancel')}
             alignSelf="end"
             margin={{ right: 'medium' }}
             onClick={cancelProps.onClick}
+            disabled={loading}
             href={cancelProps.href}
           />
-          <Button primary label="Create instance" alignSelf="start" />
+          <Button
+            type="submit"
+            label={t('createInstance.submit')}
+            alignSelf="start"
+            disabled={loading}
+            primary
+          />
+          {loading ? (
+            <Text alignSelf="center" margin={{ left: 'small' }} color="status-unknown">
+              {t('app.loading')}
+            </Text>
+          ) : null}
         </Box>
       </Form>
     </Box>

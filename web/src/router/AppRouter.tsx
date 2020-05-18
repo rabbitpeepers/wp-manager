@@ -33,6 +33,7 @@ export const AppRouter: React.FC = () => {
           ...path.domains[REACH_ROUTES],
           ...path.profile[REACH_ROUTES],
           ...path.about[REACH_ROUTES],
+          ...path.instancesCreate[REACH_ROUTES],
         ].map(getAppRedirect(path.login))
       }
     </>

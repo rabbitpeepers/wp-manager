@@ -1,7 +1,12 @@
 import mongoose from 'mongoose'
 import { settings } from 'settings/settings'
 
-mongoose.connect(settings.mongourl, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(settings.mongourl, {
+  useNewUrlParser: true,
+  useFindAndModify: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+})
 
 mongoose.Promise = global.Promise
 

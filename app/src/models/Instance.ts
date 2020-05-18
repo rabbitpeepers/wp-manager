@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
-import { Instance } from 'types/Instance'
+import { Instance as InstanceType } from 'types/Instance'
 
-export interface InstanceDocument extends Instance, mongoose.Document {}
+export interface InstanceDocument extends InstanceType, mongoose.Document {}
 export type InstanceModel = mongoose.Model<InstanceDocument>
 
 export const InstanceSchema = new mongoose.Schema({
@@ -13,11 +13,11 @@ export const InstanceSchema = new mongoose.Schema({
     enum : ['scheduled', 'processing', 'deployed', 'failed'],
     default: 'manager'
   },
-  createdAt: String,
+  createdAt: { type: Date, default: Date.now },
   owner: {
     email: String,
     id: mongoose.Types.ObjectId,
   }
 })
 
-export const User = mongoose.model<InstanceDocument>('Instance', InstanceSchema)
+export const Instance = mongoose.model<InstanceDocument>('Instance', InstanceSchema)

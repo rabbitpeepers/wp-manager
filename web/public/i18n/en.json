@@ -3,7 +3,8 @@
     "loading": "Loading...",
     "name": "WP Manager",
     "logout": "Logout",
-    "unknownError": "Unknown error"
+    "unknownError": "Unknown error",
+    "cancel": "Cancel"
   },
   "menu": {
     "about": "About",
@@ -21,7 +22,8 @@
     "loggingIn": "Logging in...",
     "loggingOut": "Logging out...",
     "status": {
-      "failed": "Failed to login. Check if your account is a member of the organization."
+      "failed": "Failed to login. Check if your account is a member of the organization.",
+      "expired": "Your session has been expired."
     },
     "userNotMember": "Check if your account is a member of the organization."
   },
@@ -45,6 +47,11 @@
     "selectDomain": "Select domain",
     "selectDomainPlaceholder": ".domain.com",
     "selectName": "Sub domain name",
-    "selectNamePlaceholder": "subdomain"
+    "selectNamePlaceholder": "subdomain",
+    "submit": "Create instance",
+    "errors": {
+      "name": "This is required. Only sub-domain name is accepted.",
+      "domain": "This is required."
+    }
   }
 } 

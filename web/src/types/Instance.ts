@@ -11,3 +11,10 @@ export interface Instance {
     email: string
   }
 }
+
+export type CreateInstancePayload = {
+  name: string
+  domainId: string
+}
+
+export type ListIntancesResponse = Instance[]
