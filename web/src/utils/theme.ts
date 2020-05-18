@@ -11,4 +11,9 @@ export const theme: ThemeType = {
       height: '20px',
     },
   },
+  formField: {
+    border: {
+      color: 'transparent',
+    },
+  },
 }

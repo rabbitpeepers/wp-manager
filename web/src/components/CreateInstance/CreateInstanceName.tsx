@@ -14,7 +14,7 @@ export const CreateInstanceName: React.FC<Props> = ({ control, disabled }) => {
   const { t } = useTranslation()
 
   return (
-    <FormField label={t('createInstance.selectName')} style={{ borderBottom: 'none' }}>
+    <FormField label={t('createInstance.selectName')}>
       <Controller
         as={<TextInput value="" disabled={disabled} placeholder={t('createInstance.selectNamePlaceholder')} />}
         name="name"

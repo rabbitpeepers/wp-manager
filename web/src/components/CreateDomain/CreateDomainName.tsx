@@ -14,7 +14,7 @@ export const CreateDomainName: React.FC<Props> = ({ control, disabled }) => {
   const { t } = useTranslation()
 
   return (
-    <FormField label={t('createDomain.selectName')} style={{ borderBottom: 'none' }}>
+    <FormField label={t('createDomain.selectName')}>
       <Controller
         as={<TextInput value="" disabled={disabled} placeholder={t('createDomain.selectNamePlaceholder')} />}
         name="name"
