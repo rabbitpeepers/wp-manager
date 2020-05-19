@@ -1,9 +1,9 @@
-import { Instance } from 'models/Instance'
+import { Instance, InstanceDocument } from 'models/Instance'
 import { Domain } from 'models/Domain'
 import { CreateInstancePayload } from 'types/API'
 import { MongoUserDocument } from 'models/User'
 
-export const createInstance = async (payload: CreateInstancePayload, user: (MongoUserDocument & Express.User)): Promise<boolean> => {
+export const createInstance = async (payload: CreateInstancePayload, user: (MongoUserDocument & Express.User)): Promise<InstanceDocument> => {
   const domain = await Domain.findById(payload.domainId)
 
   if (!domain.name) {
@@ -21,6 +21,5 @@ export const createInstance = async (payload: CreateInstancePayload, user: (Mong
     }
   })
 
-  await instance.save()
-  return true
+  return instance.save()
 }

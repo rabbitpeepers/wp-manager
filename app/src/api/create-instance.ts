@@ -3,6 +3,7 @@ import { createInstance } from 'controllers/create-instance'
 import { CreateInstancePayload } from 'types/API'
 import { isCreateInstancePayload } from 'guard/isCreateInstancePayload'
 import { MongoUserDocument } from 'models/User'
+import { scheduleTask } from 'controllers/schedule-task'
 
 app.post('/rest/instances/create', async (req, res) => {
   const user = req.user as (MongoUserDocument & Express.User)
@@ -25,9 +26,15 @@ app.post('/rest/instances/create', async (req, res) => {
   }
 
   try {
-    await createInstance(payload, user)
-    res.status(201)
-    res.send()
+    const instance = await createInstance(payload, user)
+
+    if (instance) {
+      await scheduleTask(instance.id)
+      res.status(201)
+      res.send()
+    } else {
+      throw new Error('Could not save instance')
+    }
   } catch (ex) {
     res.status(500)
     res.send(ex.message)
