@@ -4,6 +4,7 @@ import { FormField, Select, Text } from 'grommet'
 
 import { InstanceFormData } from 'src/components/CreateInstance/InstanceFormDataType'
 import React from 'react'
+import { useAuthorizationErrorEffect } from 'src/lib/useAuthorizationErrorEffect'
 import { useDomainList } from 'src/components/Domains/useDomainList'
 import { useTranslation } from 'react-i18next'
 
@@ -15,6 +16,9 @@ type Props = {
 export const CreateInstanceDomain: React.FC<Props> = ({ control, disabled }) => {
   const { t } = useTranslation()
   const { result, loading, error } = useDomainList(true)
+
+  // Handle 401
+  useAuthorizationErrorEffect(error)
 
   if (error) {
     return (
