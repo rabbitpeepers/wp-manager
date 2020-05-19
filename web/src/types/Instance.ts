@@ -1,3 +1,5 @@
+import { DomainTaskItem } from 'src/types/DomainTask'
+
 export type InstanceStatus = 'scheduled' | 'processing' | 'deployed' | 'failed'
 
 export interface Instance {
@@ -19,3 +21,8 @@ export type CreateInstancePayload = {
 }
 
 export type ListIntancesResponse = Instance[]
+
+export type InstanceDetailsResponse = {
+  instance: Instance,
+  tasks: DomainTaskItem[]
+}

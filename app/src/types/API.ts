@@ -1,5 +1,6 @@
 import { Instance } from 'types/Instance'
 import { Domain } from 'types/Domain'
+import { DomainTask } from 'types/DomainTask'
 
 export type CreateInstancePayload = {
   name: string
@@ -21,3 +22,12 @@ interface DomainItem extends Domain {
 }
 
 export type ListDomainsResponse = DomainItem[]
+
+export interface DomainTaskItem extends DomainTask {
+  id: string
+}
+
+export type InstanceDetailsResponse = {
+  instance: InstanceItem,
+  tasks: DomainTaskItem[]
+}
