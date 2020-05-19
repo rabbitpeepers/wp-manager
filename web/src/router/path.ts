@@ -20,6 +20,7 @@ export interface Path {
   profile: PathItem
   logout: PathItem
   applicationFailed: PathItem
+  instanceDetails: PathItem
 }
 
 const staticPath = (p: string): PathItem => [
@@ -44,6 +45,11 @@ export const path: Path = {
   profile: staticPath('/profile'),
   logout: staticPath('/logout'),
   applicationFailed: staticPath('/application-failed'),
+  instanceDetails: [
+    ((id = '') => `/instances/details/${id}`) as makeFn,
+    ['/instances/details/:id'],
+    '/instances/details/:id',
+  ],
 }
 
 export const makeRoute = (p: PathItem, ...args: string[]): string => p[MAKE_ROUTE](...args)

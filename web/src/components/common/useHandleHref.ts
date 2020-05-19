@@ -3,17 +3,21 @@ import {
   makeRoute,
 } from 'src/router/path'
 
-import { ButtonType } from 'grommet'
 import React from 'react'
 import { useNavigate } from '@reach/router'
 
-type Ret = Required<Pick<ButtonType, 'href' | 'onClick'>>
+type Ret = {
+  href: string
+  onClick: (e: Event) => void
+}
 
-export const useHandleHref = (to: PathItem, cb?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void): Ret => {
+type Event = React.MouseEvent<HTMLButtonElement & HTMLAnchorElement, MouseEvent>
+
+export const useHandleHref = (to: PathItem, cb?: (e: Event) => void, ...args: string[]): Ret => {
   const navigate = useNavigate()
-  const href = React.useMemo(() => makeRoute(to), [to])
+  const href = React.useMemo(() => makeRoute(to, ...args), [to, args])
 
-  const onClick = React.useCallback((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onClick = React.useCallback((e: Event) => {
     e.preventDefault()
     navigate(href)
 

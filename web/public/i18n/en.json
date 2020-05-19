@@ -85,5 +85,8 @@
     "errors": {
       "name": "This is required. Only domain name is accepted."
     }
+  },
+  "instanceDetails": {
+    "title": "Instance Details"
   }
-} 
+}
