@@ -63,11 +63,13 @@ export const useCreateAuthController = (): AuthControllerContext => {
   }, [ls, session, state])
 
   // Pull out session from LS
+  const [isValidating, setValidating] = React.useState(false)
   React.useEffect(() => {
-    if (state === 'ready') {
+    if (state === 'ready' || isValidating) {
       return
     }
 
+    setValidating(true)
     const lsSession = ls.get()
     if (lsSession) {
       if (lsSession.user) {
@@ -78,7 +80,7 @@ export const useCreateAuthController = (): AuthControllerContext => {
     } else {
       flushSession()
     }
-  }, [ls, validateSession, flushSession, state])
+  }, [ls, validateSession, flushSession, state, isValidating])
 
   return {
     authorize,

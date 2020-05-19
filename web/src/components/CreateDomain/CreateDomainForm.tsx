@@ -14,13 +14,19 @@ import { path } from 'src/router/path'
 import { useAuthorizationErrorEffect } from 'src/lib/useAuthorizationErrorEffect'
 import { useHandleHref } from 'src/components/common/useHandleHref'
 import { useSubmit } from 'src/components/CreateDomain/useSubmit'
+import { useSuccessRedirectEffect } from 'src/lib/useSuccessRedirectEffect'
 import { useTranslation } from 'react-i18next'
 
 export const CreateDomainForm: React.FC = () => {
   const cancelProps = useHandleHref(path.domains)
   const { control, handleSubmit, errors } = useForm<DomainFormData>()
   const { t } = useTranslation()
-  const { execute, loading, error } = useSubmit()
+  const {
+    execute,
+    loading,
+    error,
+    status,
+  } = useSubmit()
 
   const onSubmit = React.useCallback((data: DomainFormData) => {
     execute(data)
@@ -28,6 +34,8 @@ export const CreateDomainForm: React.FC = () => {
 
   // Handle 401
   useAuthorizationErrorEffect(error)
+  // Redirect to domains once saved
+  useSuccessRedirectEffect(status, path.domains)
 
   return (
     <Box width="large" background="light-1" pad="large">
