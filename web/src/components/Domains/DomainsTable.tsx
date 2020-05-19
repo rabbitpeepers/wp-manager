@@ -12,6 +12,7 @@ import {
 import { DomainRow } from 'src/components/Domains/DomainRow'
 import { DomainRowEmpty } from 'src/components/Domains/DomainRowEmpty'
 import React from 'react'
+import { useAuthorizationErrorEffect } from 'src/lib/useAuthorizationErrorEffect'
 import { useDomainList } from 'src/components/Domains/useDomainList'
 import { useTranslation } from 'react-i18next'
 
@@ -20,6 +21,9 @@ export const DomainsTable: React.FC = () => {
   const { result, loading, error } = useDomainList(false)
 
   const empty = loading === false && !result?.length
+
+  // Handle 401
+  useAuthorizationErrorEffect(error)
 
   return (
     <Box>

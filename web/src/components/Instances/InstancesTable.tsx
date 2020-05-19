@@ -1,5 +1,5 @@
+import { Alert, AlertSeverity } from 'src/components/Alert/Alert'
 import {
-  Anchor,
   Box,
   Table,
   TableBody,
@@ -9,15 +9,29 @@ import {
   Text,
 } from 'grommet'
 
-import { Badge } from 'src/components/common/Badge'
+import { InstanceRow } from 'src/components/Instances/InstanceRow'
+import { InstanceRowEmpty } from 'src/components/Instances/InstanceRowEmpty'
 import React from 'react'
+import { useAuthorizationErrorEffect } from 'src/lib/useAuthorizationErrorEffect'
+import { useInstancesList } from 'src/components/Instances/useInstancesList'
 import { useTranslation } from 'react-i18next'
 
 export const InstancesTable: React.FC = () => {
   const { t } = useTranslation()
+  const { result, loading, error } = useInstancesList()
+
+  const empty = loading === false && !result?.length
+
+  // Handle 401
+  useAuthorizationErrorEffect(error)
 
   return (
     <Box>
+      {error ? (
+        <Alert severity={AlertSeverity.ERROR}>
+          {(error && error.message) || t('app.unknownError')}
+        </Alert>
+      ) : null}
       <Table>
         <TableHeader>
           <TableRow>
@@ -50,35 +64,19 @@ export const InstancesTable: React.FC = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell>
-              <Text>
-                123
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Text>
-                <b>hello</b>
-                .xxx.com
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Badge color="status-ok" label="deployed" />
-            </TableCell>
-            <TableCell>
-              <Text>
-                12/05/2019
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Text>
-                nikpl777@gmail.com
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Anchor href="#" label={t('instances.details')} />
-            </TableCell>
-          </TableRow>
+          {loading ? (
+            <InstanceRowEmpty>
+              {t('app.loading')}
+            </InstanceRowEmpty>
+          ) : null}
+          {empty ? (
+            <InstanceRowEmpty>
+              {t('app.noResults')}
+            </InstanceRowEmpty>
+          ) : null}
+          {result ? (
+            result.map((i) => <InstanceRow instance={i} key={i.id} />)
+          ) : null}
         </TableBody>
       </Table>
     </Box>

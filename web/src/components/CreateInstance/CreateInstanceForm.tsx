@@ -15,13 +15,19 @@ import { path } from 'src/router/path'
 import { useAuthorizationErrorEffect } from 'src/lib/useAuthorizationErrorEffect'
 import { useHandleHref } from 'src/components/common/useHandleHref'
 import { useSubmit } from 'src/components/CreateInstance/useSubmit'
+import { useSuccessRedirectEffect } from 'src/lib/useSuccessRedirectEffect'
 import { useTranslation } from 'react-i18next'
 
 export const CreateInstanceForm: React.FC = () => {
   const cancelProps = useHandleHref(path.instances)
   const { control, handleSubmit, errors } = useForm<InstanceFormData>()
   const { t } = useTranslation()
-  const { execute, loading, error } = useSubmit()
+  const {
+    execute,
+    loading,
+    error,
+    status,
+  } = useSubmit()
 
   const onSubmit = React.useCallback((data: InstanceFormData) => {
     if (!data.domain) {
@@ -35,6 +41,8 @@ export const CreateInstanceForm: React.FC = () => {
 
   // Handle 401
   useAuthorizationErrorEffect(error)
+  // Redirect to instances once saved
+  useSuccessRedirectEffect(status, path.instances)
 
   return (
     <Box width="large" background="light-1" pad="large">

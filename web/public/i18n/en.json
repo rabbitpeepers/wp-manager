@@ -41,6 +41,12 @@
       "status": "Status",
       "date": "Date",
       "owner": "Owner"
+    },
+    "status": {
+      "scheduled": "scheduled",
+      "processing": "processing",
+      "deployed": "deployed",
+      "failed": "failed"
     }
   },
   "createInstance": {
