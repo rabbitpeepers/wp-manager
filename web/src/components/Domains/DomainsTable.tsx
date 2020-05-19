@@ -1,3 +1,4 @@
+import { Alert, AlertSeverity } from 'src/components/Alert/Alert'
 import {
   Box,
   Table,
@@ -8,15 +9,25 @@ import {
   Text,
 } from 'grommet'
 
-import { Badge } from 'src/components/common/Badge'
+import { DomainRow } from 'src/components/Domains/DomainRow'
+import { DomainRowEmpty } from 'src/components/Domains/DomainRowEmpty'
 import React from 'react'
+import { useDomainList } from 'src/components/Domains/useDomainList'
 import { useTranslation } from 'react-i18next'
 
 export const DomainsTable: React.FC = () => {
   const { t } = useTranslation()
+  const { result, loading, error } = useDomainList()
+
+  const empty = loading === false && !result?.length
 
   return (
     <Box>
+      {error ? (
+        <Alert severity={AlertSeverity.ERROR}>
+          {(error && error.message) || t('app.unknownError')}
+        </Alert>
+      ) : null}
       <Table>
         <TableHeader>
           <TableRow>
@@ -48,31 +59,19 @@ export const DomainsTable: React.FC = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableCell>
-              <Text>
-                123
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Text>
-                *.xxx.com
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Badge color="status-ok" label="active" />
-            </TableCell>
-            <TableCell>
-              <Text>
-                12/05/2019
-              </Text>
-            </TableCell>
-            <TableCell>
-              <Text>
-                nikpl777@gmail.com
-              </Text>
-            </TableCell>
-          </TableRow>
+          {loading ? (
+            <DomainRowEmpty>
+              {t('app.loading')}
+            </DomainRowEmpty>
+          ) : null}
+          {empty ? (
+            <DomainRowEmpty>
+              {t('app.noResults')}
+            </DomainRowEmpty>
+          ) : null}
+          {result ? (
+            result.map((i) => <DomainRow domain={i} key={i.id} />)
+          ) : null}
         </TableBody>
       </Table>
     </Box>

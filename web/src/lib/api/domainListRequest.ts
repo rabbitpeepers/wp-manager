@@ -1,10 +1,10 @@
-import { API_FETCH_USER } from 'src/const/API'
+import { API_LIST_DOMAINS } from 'src/const/API'
 import { AuthorizationError } from 'src/utils/AuthorizationError'
-import { User } from 'src/types/User'
+import { ListDomainsResponse } from 'src/types/Domain'
 import { settings } from 'src/settings/settings'
 
-export const fetchUserProfile = async (): Promise<User | null> => {
-  const response = await fetch(`${settings.api.url}${API_FETCH_USER}`, {
+export const domainListRequest = async (): Promise<ListDomainsResponse | null> => {
+  const response = await fetch(`${settings.api.url}${API_LIST_DOMAINS}`, {
     mode: 'cors',
     credentials: 'include',
     method: 'GET',
@@ -22,5 +22,5 @@ export const fetchUserProfile = async (): Promise<User | null> => {
     throw new AuthorizationError('User is not authorized to perfrom this action.')
   }
 
-  return await response.json() as User
+  return await response.json() as ListDomainsResponse
 }

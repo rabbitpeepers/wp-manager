@@ -5,7 +5,7 @@ import { MongoUserDocument } from 'models/User'
 export const createDomain = async (payload: CreateDomainPayload, user: (MongoUserDocument & Express.User)): Promise<boolean> => {
   const domain = new Domain({
     active: true,
-    subdomain: payload.name,
+    name: payload.name,
     owner: {
       id: user.id,
       email: user.email

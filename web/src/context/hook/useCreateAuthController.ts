@@ -1,4 +1,5 @@
 import { AuthControllerContext } from 'src/context/AuthControllerContext'
+import { AuthorizationError } from 'src/utils/AuthorizationError'
 import React from 'react'
 import { SessionContext } from 'src/context/SessionContext'
 import { User } from 'src/types/User'
@@ -45,7 +46,11 @@ export const useCreateAuthController = (): AuthControllerContext => {
 
       return user
     } catch (ex) {
-      showErrorScreen(ex)
+      if (ex instanceof AuthorizationError) {
+        logout()
+      } else {
+        showErrorScreen(ex)
+      }
       return null
     }
   }, [authorize, logout, showErrorScreen])

@@ -6,10 +6,18 @@ export type CreateInstancePayload = {
   domainId: string
 }
 
-export type ListIntancesResponse = Instance[]
+interface InstanceItem extends Instance {
+  id: string
+}
+
+export type ListIntancesResponse = InstanceItem[]
 
 export type CreateDomainPayload = {
   name: string
 }
 
-export type ListDomainsResponse = Domain[]
+interface DomainItem extends Domain {
+  id: string
+}
+
+export type ListDomainsResponse = DomainItem[]

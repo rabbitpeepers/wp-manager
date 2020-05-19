@@ -1,6 +1,7 @@
 export type InstanceStatus = 'scheduled' | 'processing' | 'deployed' | 'failed'
 
 export interface Instance {
+  id: string
   subdomain: string
   domain: string
   domainId: string

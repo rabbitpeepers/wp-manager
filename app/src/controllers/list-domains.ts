@@ -5,6 +5,7 @@ export const listDomains = async (): Promise<ListDomainsResponse> => {
   const domains = await Domain.find().limit(999)
 
   return domains.map(item => ({
+    id: item.id,
     name: item.name,
     active: item.active,
     createdAt: item.createdAt,

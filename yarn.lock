@@ -1029,7 +1029,7 @@
     to-fast-properties "^2.0.0"
 
 "@bit/rabbitpeepers.wp-manager.path@file:./bit-components/path":
-  version "0.4.4"
+  version "0.5.0"
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -7892,6 +7892,11 @@ mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@~0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
   dependencies:
     minimist "^1.2.5"
+
+moment@^2.25.3:
+  version "2.25.3"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.25.3.tgz#252ff41319cf41e47761a1a88cab30edfe9808c0"
+  integrity sha512-PuYv0PHxZvzc15Sp8ybUCoQ+xpyPWvjOuK72a5ovzp2LI32rJXOiIfyoFoYvG3s6EwwrdkMyWuRiEHSZRLJNdg==
 
 mongodb@3.5.7:
   version "3.5.7"
