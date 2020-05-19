@@ -1,8 +1,10 @@
+import { Alert, AlertSeverity } from 'src/components/Alert/Alert'
 import { Control, Controller } from 'react-hook-form'
-import { FormField, Select } from 'grommet'
+import { FormField, Select, Text } from 'grommet'
 
 import { InstanceFormData } from 'src/components/CreateInstance/InstanceFormDataType'
 import React from 'react'
+import { useDomainList } from 'src/components/Domains/useDomainList'
 import { useTranslation } from 'react-i18next'
 
 type Props = {
@@ -10,24 +12,49 @@ type Props = {
   disabled: boolean
 }
 
-const suggestions = ['aa.xx', 'bb.cc', 'dd.yy']
-
 export const CreateInstanceDomain: React.FC<Props> = ({ control, disabled }) => {
   const { t } = useTranslation()
+  const { result, loading, error } = useDomainList(true)
+
+  if (error) {
+    return (
+      <Alert severity={AlertSeverity.ERROR}>
+        {(error && error.message) || t('app.unknownError')}
+      </Alert>
+    )
+  }
+
+  if (loading) {
+    return (
+      <Text color="status-unknown">
+        {t('app.loading')}
+      </Text>
+    )
+  }
+
+  if (!result?.length) {
+    return (
+      <Alert severity={AlertSeverity.WARNING}>
+        {t('createInstance.noDomains')}
+      </Alert>
+    )
+  }
 
   return (
     <FormField label={t('createInstance.selectDomain')}>
       <Controller
         as={(
           <Select
-            options={suggestions}
+            options={result}
             placeholder={t('createInstance.selectDomainPlaceholder')}
             value=""
+            labelKey="name"
+            valueKey="id"
             disabled={disabled}
           />
         )}
         onChange={([e]) => e.value}
-        name="domainId"
+        name="domain"
         defaultValue=""
         control={control}
         rules={{

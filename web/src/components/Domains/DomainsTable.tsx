@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next'
 
 export const DomainsTable: React.FC = () => {
   const { t } = useTranslation()
-  const { result, loading, error } = useDomainList()
+  const { result, loading, error } = useDomainList(false)
 
   const empty = loading === false && !result?.length
 

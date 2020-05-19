@@ -24,7 +24,13 @@ export const CreateInstanceForm: React.FC = () => {
   const { execute, loading, error } = useSubmit()
 
   const onSubmit = React.useCallback((data: InstanceFormData) => {
-    execute(data)
+    if (!data.domain) {
+      return
+    }
+    execute({
+      name: data.name,
+      domainId: data.domain.id,
+    })
   }, [execute])
 
   // Handle 401
@@ -41,7 +47,7 @@ export const CreateInstanceForm: React.FC = () => {
         <CreateInstanceName disabled={loading} control={control} />
         <ErrorMessage errors={errors} name="name" message={t('createInstance.errors.name')} />
         <CreateInstanceDomain disabled={loading} control={control} />
-        <ErrorMessage errors={errors} name="domainId" message={t('createInstance.errors.domain')} />
+        <ErrorMessage errors={errors} name="domain" message={t('createInstance.errors.domain')} />
         <Box margin={{ top: 'medium' }} flex direction="row">
           <Button
             label={t('app.cancel')}

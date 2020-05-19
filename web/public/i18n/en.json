@@ -50,6 +50,7 @@
     "selectName": "Sub domain name",
     "selectNamePlaceholder": "subdomain",
     "submit": "Create instance",
+    "noDomains": "No root domains found.",
     "errors": {
       "name": "This is required. Only sub-domain name is accepted.",
       "domain": "This is required."

@@ -1,10 +1,11 @@
-import { API_LIST_DOMAINS } from 'src/const/API'
+import { API_LIST_DOMAINS, API_LIST_DOMAINS_ACTIVE } from 'src/const/API'
 import { AuthorizationError } from 'src/utils/AuthorizationError'
 import { ListDomainsResponse } from 'src/types/Domain'
 import { settings } from 'src/settings/settings'
 
-export const domainListRequest = async (): Promise<ListDomainsResponse | null> => {
-  const response = await fetch(`${settings.api.url}${API_LIST_DOMAINS}`, {
+export const domainListRequest = async (activeOnly: boolean): Promise<ListDomainsResponse | null> => {
+  const url = `${settings.api.url}${activeOnly ? API_LIST_DOMAINS_ACTIVE : API_LIST_DOMAINS}`
+  const response = await fetch(url, {
     mode: 'cors',
     credentials: 'include',
     method: 'GET',
