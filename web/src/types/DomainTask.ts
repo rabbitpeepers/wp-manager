@@ -1,7 +1,8 @@
-import { InstanceStatus } from 'src/types/Instance'
+import { InstanceStatus } from 'src/types/InstanceStatus'
 import { LogRecord } from 'src/types/LogRecord'
 
 export interface DomainTask {
+  id: string
   instanceId: string
   createdAt: string
   status: InstanceStatus

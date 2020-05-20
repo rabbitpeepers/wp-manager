@@ -2,6 +2,7 @@ import { Alert, AlertSeverity } from 'src/components/Alert/Alert'
 import { Heading, Text } from 'grommet'
 
 import { InstanceInfo } from 'src/components/InstanceDetails/InstanceInfo'
+import { InstanceTasks } from 'src/components/InstanceTasks/InstanceTasks'
 import { Page } from 'src/components/Page/Page'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
@@ -32,7 +33,10 @@ export const InstanceDetails: React.FC<RouteComponentProps> = () => {
         </Text>
       ) : null}
       {result ? (
-        <InstanceInfo instance={result.instance} />
+        <>
+          <InstanceInfo instance={result.instance} />
+          <InstanceTasks tasks={result.tasks} />
+        </>
       ) : null}
     </Page>
   )

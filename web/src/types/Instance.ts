@@ -1,6 +1,5 @@
 import { DomainTaskItem } from 'src/types/DomainTask'
-
-export type InstanceStatus = 'scheduled' | 'processing' | 'deployed' | 'failed'
+import { InstanceStatus } from 'src/types/InstanceStatus'
 
 export interface Instance {
   id: string

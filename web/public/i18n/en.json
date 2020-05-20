@@ -87,6 +87,18 @@
     }
   },
   "instanceDetails": {
-    "title": "Instance Details"
+    "title": "Instance Details",
+    "task": {
+      "title": "Tasks",
+      "id": "Task ID",
+      "status": "Task status",
+      "date": "Task creating date",
+      "noTasks": "No tasks created yet."
+    },
+    "logs": {
+      "title": "Logs",
+      "date": "Date",
+      "text": "Text"
+    }
   }
 }

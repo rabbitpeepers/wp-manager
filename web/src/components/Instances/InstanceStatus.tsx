@@ -1,5 +1,5 @@
 import { Badge } from 'src/components/common/Badge'
-import { InstanceStatus as InstanceStatusType } from 'src/types/Instance'
+import { InstanceStatus as InstanceStatusType } from 'src/types/InstanceStatus'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 

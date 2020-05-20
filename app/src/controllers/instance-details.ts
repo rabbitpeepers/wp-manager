@@ -7,7 +7,7 @@ export const instanceDetails = async (id: string): Promise<InstanceDetailsRespon
     Instance.findById(id),
     DomainTask.find({
       instanceId: id
-    })
+    }).sort({ createdAt: 'desc' })
   ])
 
   return {
