@@ -10,6 +10,15 @@ export const createInstance = async (payload: CreateInstancePayload, user: (Mong
     throw new Error('Invalid domain name')
   }
 
+  const checkForUniq = await Instance.findOne({
+    subdomain: payload.name,
+    domainId: domain.id,
+  })
+
+  if (checkForUniq) {
+    throw new Error('This name is already taken.')
+  }
+
   const instance = new Instance({
     subdomain: payload.name,
     domain: domain.name,
