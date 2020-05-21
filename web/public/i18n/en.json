@@ -105,5 +105,8 @@
       "date": "Date",
       "text": "Text"
     }
+  },
+  "about": {
+    "title": "About"
   }
 }
