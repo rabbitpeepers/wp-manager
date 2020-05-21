@@ -14,9 +14,10 @@ type Props = {
 export const InstanceTasksItem: React.FC<Props> = ({ task }) => {
   const { t } = useTranslation()
   const fmtDate = React.useMemo(() => moment(task.createdAt).fromNow(), [task.createdAt])
+  const fmtStartDate = React.useMemo(() => moment(task.startedAt).fromNow(), [task.startedAt])
 
   return (
-    <Box width="xlarge" background="light-1" pad="large">
+    <Box width="xlarge" background="light-1" margin={{ bottom: 'medium' }} pad="large">
       <Box flex>
         <Box flex direction="row">
           <Text margin={{ right: 'small' }} color="dark-3">
@@ -40,6 +41,16 @@ export const InstanceTasksItem: React.FC<Props> = ({ task }) => {
             {fmtDate}
           </Text>
         </Box>
+        {task.startedAt ? (
+          <Box flex direction="row">
+            <Text margin={{ right: 'small' }} color="dark-3">
+              {`${t('instanceDetails.task.startDate')}:`}
+            </Text>
+            <Text title={task.startedAt}>
+              {fmtStartDate}
+            </Text>
+          </Box>
+        ) : null}
       </Box>
       <Heading size="small">
         {t('instanceDetails.logs.title')}

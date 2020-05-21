@@ -98,6 +98,7 @@
       "id": "Task ID",
       "status": "Task status",
       "date": "Task creating date",
+      "startDate": "Task started date",
       "noTasks": "No tasks created yet."
     },
     "logs": {

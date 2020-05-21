@@ -7,6 +7,7 @@ export type DomainTaskModel = mongoose.Model<DomainTaskDocument>
 export const DomainTaskSchema = new mongoose.Schema({
   instanceId: mongoose.Types.ObjectId,
   createdAt: { type: Date, default: Date.now },
+  startedAt: { type: Date },
   status: {
     type: String,
     enum : ['scheduled', 'processing', 'deployed', 'failed'],

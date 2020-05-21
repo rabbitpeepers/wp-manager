@@ -24,6 +24,7 @@ export const instanceDetails = async (id: string): Promise<InstanceDetailsRespon
       id: i.id,
       status: i.status,
       createdAt: i.createdAt,
+      startedAt: i.startedAt,
       logs: i.logs,
       instanceId: id,
     }))
