@@ -28,7 +28,7 @@ export const PostLogin: React.FC<RouteComponentProps> = () => {
   }, [state, validateSession, navigate])
 
   return (
-    <Page title={t('login.loggingIn')} rootProps={{ background: 'light-1', height: '100%' }}>
+    <Page title={t('login.loggingIn')} rootProps={{ background: 'light-1' }}>
       <Splash />
     </Page>
   )

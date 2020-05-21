@@ -22,7 +22,7 @@ export const Splash: React.FC = () => {
   const label = React.useMemo(() => (completed ? 'Loading...' : ''), [completed])
 
   return (
-    <Main pad="large" justify="center" height="100%">
+    <Main pad="large" justify="center" height={{ min: '100%' }}>
       <Box width="100px" height="100px" alignSelf="center">
         <Meter
           size="large"

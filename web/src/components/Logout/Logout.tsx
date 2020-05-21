@@ -28,7 +28,7 @@ export const Logout: React.FC<RouteComponentProps> = () => {
   }, [state, logout, navigate])
 
   return (
-    <Page title={t('login.loggingOut')} rootProps={{ background: 'light-1', height: '100%' }}>
+    <Page title={t('login.loggingOut')} rootProps={{ background: 'light-1' }}>
       <Splash />
     </Page>
   )

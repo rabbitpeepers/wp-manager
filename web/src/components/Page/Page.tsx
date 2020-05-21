@@ -16,9 +16,9 @@ export const Page: React.FC<Props> = ({ title, children, rootProps }) => {
   return (
     <>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-      <Main flex="grow" {...rootProps}>
+      <Main flex="grow" height={{ min: '100vh' }} {...rootProps}>
         <AppHeader />
-        <Box height="100%" direction="row" flex>
+        <Box height={{ min: '100%' }} direction="row" flex>
           <AppSidebar />
           <Box flex="grow" pad="medium">
             {children}

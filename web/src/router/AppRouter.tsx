@@ -67,7 +67,7 @@ export const AppRouter: React.FC = () => {
   ) : null
 
   return (
-    <Router style={{ height: '100%' }}>
+    <Router style={{ minHeight: '100%' }}>
       {anonymous}
       {authorized}
     </Router>

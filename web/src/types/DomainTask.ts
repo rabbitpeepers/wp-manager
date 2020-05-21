@@ -5,6 +5,7 @@ export interface DomainTask {
   id: string
   instanceId: string
   createdAt: string
+  startedAt: string
   status: InstanceStatus
   logs: LogRecord[]
 }
