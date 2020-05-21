@@ -60,6 +60,7 @@ export const AppRouter: React.FC = () => {
         ].map(getAppRedirect(path.dashboard))
       }
       <Redirect from="/" to={makeRoute(path.dashboard)} noThrow />
+      <Redirect from={makeRoute(path.profile)} to={makeRoute(path.dashboard)} noThrow />
     </>
   ) : null
 
