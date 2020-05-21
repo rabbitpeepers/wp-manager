@@ -19,11 +19,11 @@ export const InstanceTasksItem: React.FC<Props> = ({ task }) => {
   return (
     <Box width="xlarge" background="light-1" margin={{ bottom: 'medium' }} pad="large">
       <Box flex>
-        <Box flex direction="row">
+        <Box flex direction="row" align="center">
           <Text margin={{ right: 'small' }} color="dark-3">
             {`${t('instanceDetails.task.id')}:`}
           </Text>
-          <Text>
+          <Text size="small" color="dark-2">
             {task.id}
           </Text>
         </Box>

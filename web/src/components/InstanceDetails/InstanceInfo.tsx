@@ -17,11 +17,11 @@ export const InstanceInfo: React.FC<Props> = ({ instance }) => {
   return (
     <Box width="xlarge" background="light-1" pad="large">
       <Box flex>
-        <Box flex direction="row">
+        <Box flex direction="row" align="center">
           <Text margin={{ right: 'small' }} color="dark-3">
             {`${t('domains.table.id')}:`}
           </Text>
-          <Text>
+          <Text size="small" color="dark-2">
             {instance.id}
           </Text>
         </Box>

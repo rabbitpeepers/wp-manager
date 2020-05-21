@@ -43,12 +43,12 @@ export const InstanceLogs: React.FC<Props> = ({ logs }) => {
         {logs.map((item) => (
           <TableRow key={item.date}>
             <TableCell size="small">
-              <Text>
+              <Text size="small" color="dark-3">
                 {item.date}
               </Text>
             </TableCell>
             <TableCell>
-              <Text>
+              <Text size="small">
                 {item.text}
               </Text>
             </TableCell>
