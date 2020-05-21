@@ -53,9 +53,21 @@ export const CreateInstanceForm: React.FC = () => {
       ) : null}
       <Form onSubmit={handleSubmit(onSubmit)}>
         <CreateInstanceName disabled={loading} control={control} />
-        <ErrorMessage errors={errors} name="name" message={t('createInstance.errors.name')} />
+        <ErrorMessage errors={errors} name="name">
+          {() => (
+            <Text color="status-critical" size="small">
+              {t('createInstance.errors.name')}
+            </Text>
+          )}
+        </ErrorMessage>
         <CreateInstanceDomain disabled={loading} control={control} />
-        <ErrorMessage errors={errors} name="domain" message={t('createInstance.errors.domain')} />
+        <ErrorMessage errors={errors} name="domain">
+          {() => (
+            <Text color="status-critical" size="small">
+              {t('createInstance.errors.domain')}
+            </Text>
+          )}
+        </ErrorMessage>
         <Box margin={{ top: 'medium' }} flex direction="row">
           <Button
             label={t('app.cancel')}

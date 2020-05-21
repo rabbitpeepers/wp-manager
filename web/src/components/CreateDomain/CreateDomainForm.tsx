@@ -46,7 +46,13 @@ export const CreateDomainForm: React.FC = () => {
       ) : null}
       <Form onSubmit={handleSubmit(onSubmit)}>
         <CreateDomainName disabled={loading} control={control} />
-        <ErrorMessage errors={errors} name="name" message={t('createDomain.errors.name')} />
+        <ErrorMessage errors={errors} name="name">
+          {() => (
+            <Text color="status-critical" size="small">
+              {t('createDomain.errors.name')}
+            </Text>
+          )}
+        </ErrorMessage>
         <Box margin={{ top: 'medium' }} flex direction="row">
           <Button
             label={t('app.cancel')}
