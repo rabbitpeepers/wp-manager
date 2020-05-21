@@ -1,4 +1,5 @@
 import { Instance } from 'types/Instance'
+import { InstanceStatus, SystemStatus } from 'types/Instance'
 import { Domain } from 'types/Domain'
 import { DomainTask } from 'types/DomainTask'
 
@@ -30,4 +31,11 @@ export interface DomainTaskItem extends DomainTask {
 export type InstanceDetailsResponse = {
   instance: InstanceItem,
   tasks: DomainTaskItem[]
+}
+
+export type DashboardStats = {
+  systemStatus: SystemStatus
+  stats: {
+    [key in InstanceStatus]: number
+  }
 }

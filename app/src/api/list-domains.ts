@@ -15,7 +15,6 @@ app.get('/rest/domains', async (req, res) => {
   res.send(JSON.stringify(await listDomains({})))
 })
 
-
 app.get('/rest/domains/active', async (req, res) => {
   const user = req.user as (MongoUserDocument & Express.User)
 

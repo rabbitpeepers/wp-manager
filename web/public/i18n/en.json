@@ -29,7 +29,10 @@
     "userNotMember": "Check if your account is a member of the organization."
   },
   "dashboard": {
-    "title": "Dashboard"
+    "title": "Dashboard",
+    "systemStatus": "System Status",
+    "category": "Category",
+    "Count": "Count"
   },
   "instances": {
     "title": "Instances",
@@ -46,7 +49,9 @@
       "scheduled": "scheduled",
       "processing": "processing",
       "deployed": "deployed",
-      "failed": "failed"
+      "failed": "failed",
+      "unknown": "unknown",
+      "pending": "pending"
     }
   },
   "createInstance": {
