@@ -28,7 +28,7 @@ export const DashboardInfoTable: React.FC<Props> = ({ stats }) => {
             {t('dashboard.category')}
           </TableCell>
           <TableCell scope="col">
-            {t('dashboard.cound')}
+            {t('dashboard.count')}
           </TableCell>
         </TableRow>
       </TableHeader>

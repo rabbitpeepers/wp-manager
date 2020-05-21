@@ -32,7 +32,7 @@
     "title": "Dashboard",
     "systemStatus": "System Status",
     "category": "Category",
-    "Count": "Count"
+    "count": "Count"
   },
   "instances": {
     "title": "Instances",
