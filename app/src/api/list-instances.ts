@@ -8,6 +8,12 @@ app.get('/rest/instances', async (req, res) => {
     return
   }
 
-  res.status(200)
-  res.send(JSON.stringify(await listIntances()))
+  try {
+    const data = await listIntances()
+    res.status(200)
+    res.send(JSON.stringify(data))
+  } catch (ex) {
+    res.status(500)
+    res.send(JSON.stringify(ex))
+  }
 })

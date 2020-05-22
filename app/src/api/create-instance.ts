@@ -37,6 +37,6 @@ app.post('/rest/instances/create', async (req, res) => {
     }
   } catch (ex) {
     res.status(500)
-    res.send(ex.message)
+    res.send(JSON.stringify(ex))
   }
 })

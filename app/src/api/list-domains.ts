@@ -11,8 +11,14 @@ app.get('/rest/domains', async (req, res) => {
     return
   }
 
-  res.status(200)
-  res.send(JSON.stringify(await listDomains({})))
+  try {
+    const data = await listDomains({})
+    res.status(200)
+    res.send(JSON.stringify(data))
+  } catch (ex) {
+    res.status(500)
+    res.send(JSON.stringify(ex))
+  }
 })
 
 app.get('/rest/domains/active', async (req, res) => {
@@ -24,6 +30,12 @@ app.get('/rest/domains/active', async (req, res) => {
     return
   }
 
-  res.status(200)
-  res.send(JSON.stringify(await listDomains({ active: true })))
+  try {
+    const data = await listDomains({ active: true })
+    res.status(200)
+    res.send(JSON.stringify(data))
+  } catch (ex) {
+    res.status(500)
+    res.send(JSON.stringify(ex))
+  }
 })

@@ -23,5 +23,10 @@ export const instancesListRequest = async (): Promise<ListIntancesResponse | nul
     throw new AuthorizationError('User is not authorized to perfrom this action.')
   }
 
+  if (response.status !== 200) {
+    const res = await response.json() as { message: string }
+    throw new Error(res?.message || `[HTTP] Error ${response.status}`)
+  }
+
   return await response.json() as ListIntancesResponse
 }

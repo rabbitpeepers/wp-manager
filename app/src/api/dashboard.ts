@@ -11,6 +11,12 @@ app.get('/rest/dashboard', async (req, res) => {
     return
   }
 
-  res.status(200)
-  res.send(JSON.stringify(await dashboardInfo()))
+  try {
+    const data = await dashboardInfo()
+    res.status(200)
+    res.send(JSON.stringify(data))
+  } catch (ex) {
+    res.status(500)
+    res.send(JSON.stringify(ex))
+  }
 })

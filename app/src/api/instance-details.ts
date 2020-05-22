@@ -8,6 +8,12 @@ app.get('/rest/instances/:id', async (req, res) => {
     return
   }
 
-  res.status(200)
-  res.send(JSON.stringify(await instanceDetails(req.params.id)))
+  try {
+    const data = await instanceDetails(req.params.id)
+    res.status(200)
+    res.send(JSON.stringify(data))
+  } catch (ex) {
+    res.status(500)
+    res.send(JSON.stringify(ex))
+  }
 })

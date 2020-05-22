@@ -29,6 +29,6 @@ app.post('/rest/domains/create', async (req, res) => {
     res.send()
   } catch (ex) {
     res.status(500)
-    res.send(ex.message)
+    res.send(JSON.stringify(ex))
   }
 })

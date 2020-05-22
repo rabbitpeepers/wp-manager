@@ -51,7 +51,7 @@
       "deployed": "deployed",
       "failed": "failed",
       "unknown": "unknown",
-      "pending": "pending"
+      "pending": "ready"
     }
   },
   "createInstance": {
