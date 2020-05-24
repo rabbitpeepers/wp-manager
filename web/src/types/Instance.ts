@@ -17,6 +17,13 @@ export interface Instance {
 export type CreateInstancePayload = {
   name: string
   domainId: string
+  meta: {
+    username: string
+    password: string
+    firstName: string
+    lastName: string
+    blogName: string
+  }
 }
 
 export type ListIntancesResponse = Instance[]

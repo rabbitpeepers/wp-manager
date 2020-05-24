@@ -12,5 +12,6 @@ export const listIntances = async (): Promise<ListIntancesResponse> => {
     status: item.status,
     createdAt: item.createdAt,
     owner: item.owner,
+    meta: item.meta,
   }))
 }

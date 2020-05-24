@@ -19,6 +19,7 @@ export const instanceDetails = async (id: string): Promise<InstanceDetailsRespon
       status: instance.status,
       createdAt: instance.createdAt,
       owner: instance.owner,
+      meta: instance.meta,
     },
     tasks: tasks.map(i => ({
       id: i.id,

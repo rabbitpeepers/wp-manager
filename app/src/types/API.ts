@@ -1,11 +1,11 @@
-import { Instance } from 'types/Instance'
-import { InstanceStatus, SystemStatus } from 'types/Instance'
+import { Instance, InstanceMeta, InstanceStatus, SystemStatus } from 'types/Instance'
 import { Domain } from 'types/Domain'
 import { DomainTask } from 'types/DomainTask'
 
 export type CreateInstancePayload = {
   name: string
   domainId: string
+  meta: InstanceMeta
 }
 
 interface InstanceItem extends Instance {

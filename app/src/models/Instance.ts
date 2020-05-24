@@ -17,6 +17,13 @@ export const InstanceSchema = new mongoose.Schema({
   owner: {
     email: String,
     id: mongoose.Types.ObjectId,
+  },
+  meta: {
+    username: String,
+    password: String,
+    firstName: String,
+    lastName: String,
+    blogName: String,
   }
 })
 

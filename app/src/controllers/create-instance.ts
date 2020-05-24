@@ -27,7 +27,8 @@ export const createInstance = async (payload: CreateInstancePayload, user: (Mong
     owner: {
       id: user.id,
       email: user.email
-    }
+    },
+    meta: payload.meta
   })
 
   return instance.save()

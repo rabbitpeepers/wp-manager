@@ -3,11 +3,13 @@ import {
   Box,
   Button,
   Form,
+  Grid,
   Text,
 } from 'grommet'
 import { ErrorMessage, useForm } from 'react-hook-form'
 
 import { CreateInstanceDomain } from 'src/components/CreateInstance/CreateInstanceDomain'
+import { CreateInstanceMetaInput } from 'src/components/CreateInstance/CreateInstanceMetaInput'
 import { CreateInstanceName } from 'src/components/CreateInstance/CreateInstanceName'
 import { InstanceFormData } from 'src/components/CreateInstance/InstanceFormDataType'
 import React from 'react'
@@ -17,6 +19,7 @@ import { useHandleHref } from 'src/components/common/useHandleHref'
 import { useSubmit } from 'src/components/CreateInstance/useSubmit'
 import { useSuccessRedirectEffect } from 'src/lib/useSuccessRedirectEffect'
 import { useTranslation } from 'react-i18next'
+import { strongPassword } from 'src/utils/regexp'
 
 export const CreateInstanceForm: React.FC = () => {
   const cancelProps = useHandleHref(path.instances)
@@ -36,6 +39,7 @@ export const CreateInstanceForm: React.FC = () => {
     execute({
       name: data.name,
       domainId: data.domain.id,
+      meta: data.meta,
     })
   }, [execute])
 
@@ -43,6 +47,16 @@ export const CreateInstanceForm: React.FC = () => {
   useAuthorizationErrorEffect(error)
   // Redirect to instances once saved
   useSuccessRedirectEffect(status, path.instances)
+
+  const renderError = React.useCallback((name: string, label?: string) => (
+    <ErrorMessage errors={errors} name={name}>
+      {() => (
+        <Text color="status-critical" size="small">
+          {t(`createInstance.errors.${label || name}`)}
+        </Text>
+      )}
+    </ErrorMessage>
+  ), [t, errors])
 
   return (
     <Box width="large" background="light-1" pad="large">
@@ -52,22 +66,62 @@ export const CreateInstanceForm: React.FC = () => {
         </Alert>
       ) : null}
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <CreateInstanceName disabled={loading} control={control} />
-        <ErrorMessage errors={errors} name="name">
-          {() => (
-            <Text color="status-critical" size="small">
-              {t('createInstance.errors.name')}
-            </Text>
-          )}
-        </ErrorMessage>
-        <CreateInstanceDomain disabled={loading} control={control} />
-        <ErrorMessage errors={errors} name="domain">
-          {() => (
-            <Text color="status-critical" size="small">
-              {t('createInstance.errors.domain')}
-            </Text>
-          )}
-        </ErrorMessage>
+        <Grid columns={['1fr', '1fr']} gap="small">
+          <Box>
+            <CreateInstanceName disabled={loading} control={control} />
+            {renderError('name')}
+          </Box>
+          <Box>
+            <CreateInstanceDomain disabled={loading} control={control} />
+            {renderError('domain')}
+          </Box>
+        </Grid>
+        <Box
+          margin={{ top: 'small' }}
+          pad={{ top: 'small' }}
+          border={{ color: 'light-2', size: 'small', side: 'top' }}
+        >
+          <CreateInstanceMetaInput
+            disabled={loading}
+            control={control}
+            name="meta.blogName"
+            label="blogName"
+            renderError={renderError}
+          />
+          <Grid columns={['1fr', '1fr']} gap="small">
+            <CreateInstanceMetaInput
+              disabled={loading}
+              control={control}
+              name="meta.username"
+              label="username"
+              renderError={renderError}
+            />
+            <CreateInstanceMetaInput
+              disabled={loading}
+              control={control}
+              name="meta.password"
+              label="wppassword"
+              type="password"
+              validatePattern={strongPassword}
+              renderError={renderError}
+            />
+            <CreateInstanceMetaInput
+              disabled={loading}
+              control={control}
+              name="meta.firstName"
+              label="firstName"
+              renderError={renderError}
+            />
+            <CreateInstanceMetaInput
+              disabled={loading}
+              control={control}
+              name="meta.lastName"
+              label="lastName"
+              renderError={renderError}
+            />
+          </Grid>
+        </Box>
+
         <Box margin={{ top: 'medium' }} flex direction="row">
           <Button
             label={t('app.cancel')}

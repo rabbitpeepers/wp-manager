@@ -56,15 +56,30 @@
   },
   "createInstance": {
     "title": "Create new instance",
-    "selectDomain": "Select domain",
+    "selectDomain": "Domain",
     "selectDomainPlaceholder": ".domain.com",
-    "selectName": "Sub domain name",
+    "selectName": "Subdomain name",
     "selectNamePlaceholder": "subdomain",
+    "username": "Wordpress admin username",
+    "usernamePlaceholder": "admin",
+    "wppassword": "Wordpress admin password",
+    "wppasswordPlaceholder": "",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "John",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Doe",
+    "blogName": "Blog Name",
+    "blogNamePlaceholder": "This is a blog!",
     "submit": "Create instance",
     "noDomains": "No root domains found.",
     "errors": {
       "name": "This is required. Only sub-domain name is accepted.",
-      "domain": "This is required."
+      "domain": "This is required.",
+      "username": "This is required.",
+      "wppassword": "Minimal length is 8 symbols. Must include lowercase and uppercase letter and at least one number.",
+      "firstName": "This is required.",
+      "lastName": "This is required.",
+      "blogName": "This is required."
     }
   },
   "domains": {
