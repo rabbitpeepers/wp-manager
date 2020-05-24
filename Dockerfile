@@ -20,6 +20,7 @@ WORKDIR /wp-manager/web
 RUN yarn build
 
 WORKDIR /wp-manager/app
+RUN yarn && yarn build
 
 # start app
 CMD ["yarn", "serve"]
