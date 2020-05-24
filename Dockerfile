@@ -2,8 +2,6 @@
 FROM node:14 AS webbuild
 WORKDIR /wp-manager
 
-# add /web/node_modules/.bin to $PATH
-ENV PATH /web/node_modules/.bin:$PATH
 ENV REACT_APP_API_URL=http://localhost:9000
 
 # install and cache app dependencies
