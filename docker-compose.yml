@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  wp-mongodb:
+    image: mongo:latest
+    volumes:
+      - type: volume
+        source: mongodb
+        target: /data/db
+        volume:
+          nocopy: true
+    networks:
+      - wp-manager
+  wp-manager:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        REACT_APP_API_URL: http://localhost:9000
+    ports:
+      - "9000:9000"
+    environment:
+      RACK_ENV: development
+    volumes:
+      - type: bind
+        source: ./app/.env
+        target: /wp-amanger/app/.env
+      - type: bind
+        source: ./web/.env
+        target: /wp-manager/web/.env
+    networks:
+      - wp-manager
+
+networks:
+  wp-manager:
+
+volumes:
+  mongodb:
