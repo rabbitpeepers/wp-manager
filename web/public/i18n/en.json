@@ -70,6 +70,8 @@
     "lastNamePlaceholder": "Doe",
     "blogName": "Blog Name",
     "blogNamePlaceholder": "This is a blog!",
+    "email": "Wordpress admin email",
+    "emailPlaceholder": "support@blog.com",
     "submit": "Create instance",
     "noDomains": "No root domains found.",
     "errors": {
@@ -79,7 +81,8 @@
       "wppassword": "Minimal length is 8 symbols. Must include lowercase and uppercase letter and at least one number.",
       "firstName": "This is required.",
       "lastName": "This is required.",
-      "blogName": "This is required."
+      "blogName": "This is required.",
+      "email": "Enter a valid email."
     }
   },
   "domains": {

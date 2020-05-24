@@ -5,6 +5,7 @@ import { isCreateInstancePayload } from 'guard/isCreateInstancePayload'
 import { MongoUserDocument } from 'models/User'
 import { scheduleTask } from 'controllers/schedule-task'
 import { isStrongPassword } from 'utils/isStrongPassword'
+import { isValidEmail } from 'utils/isValidEmail'
 
 app.post('/rest/instances/create', async (req, res) => {
   const user = req.user as (MongoUserDocument & Express.User)
@@ -30,6 +31,12 @@ app.post('/rest/instances/create', async (req, res) => {
   if (!isStrongPassword(payload.meta.password)) {
     res.status(403)
     res.send('Password is not strong enough')
+    return
+  }
+
+  if (!isValidEmail(payload.meta.email)) {
+    res.status(403)
+    res.send('Email is not valid')
     return
   }
 

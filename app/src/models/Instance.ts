@@ -24,6 +24,7 @@ export const InstanceSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
     blogName: String,
+    email: String,
   }
 })
 

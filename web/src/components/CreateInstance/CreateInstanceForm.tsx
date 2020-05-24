@@ -19,11 +19,29 @@ import { useHandleHref } from 'src/components/common/useHandleHref'
 import { useSubmit } from 'src/components/CreateInstance/useSubmit'
 import { useSuccessRedirectEffect } from 'src/lib/useSuccessRedirectEffect'
 import { useTranslation } from 'react-i18next'
-import { strongPassword } from 'src/utils/regexp'
+import { strongPassword, email } from 'src/utils/regexp'
+import { useMe } from 'src/context/hook/useMe'
 
 export const CreateInstanceForm: React.FC = () => {
+  const me = useMe()
   const cancelProps = useHandleHref(path.instances)
-  const { control, handleSubmit, errors } = useForm<InstanceFormData>()
+
+  const [firstName, lastName] = React.useMemo<string[]>(() => !me ? [] : me?.displayName.split(' '), [me])
+
+  const { control, handleSubmit, errors } = useForm<InstanceFormData>({
+    defaultValues: {
+      name: '',
+      domain: undefined,
+      meta: {
+        email: me?.email || '',
+        username: me?.username || '',
+        password: '',
+        firstName,
+        lastName,
+        blogName: '',
+      },
+    }
+  })
   const { t } = useTranslation()
   const {
     execute,
@@ -86,6 +104,14 @@ export const CreateInstanceForm: React.FC = () => {
             control={control}
             name="meta.blogName"
             label="blogName"
+            renderError={renderError}
+          />
+          <CreateInstanceMetaInput
+            disabled={loading}
+            control={control}
+            name="meta.email"
+            label="email"
+            validatePattern={email}
             renderError={renderError}
           />
           <Grid columns={['1fr', '1fr']} gap="small">

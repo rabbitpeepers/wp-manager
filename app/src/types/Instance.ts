@@ -6,6 +6,7 @@ export type InstanceMeta = {
   firstName: string
   lastName: string
   blogName: string
+  email: string
 }
 
 export interface Instance {
