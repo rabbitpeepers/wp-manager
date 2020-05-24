@@ -3,6 +3,7 @@ import OAuth2Strategy from 'passport-oauth2'
 import { Strategy as GithubStrategy } from 'passport-github2'
 import { settings } from 'settings/settings'
 import { VerifyMembership } from 'controllers/verify-membership'
+import { fetchGithubEmail } from 'controllers/fetch-gihub-emails'
 import { isUserProfile } from 'guard/isUserProfile'
 import { UserProfile } from 'types/UserProfile'
 import * as ErrorCodes from 'const/ErrorCodes'
@@ -28,6 +29,18 @@ const verify: OAuth2Strategy.VerifyFunctionWithRequest = async (
     console.log(githubProfile)
     done(new Error('profile is not UserProfile object'))
     return
+  }
+
+  if (!githubProfile.emails) {
+    try {
+      githubProfile.emails = (await fetchGithubEmail(accessToken))
+        .filter(i => i.primary)
+        .map(i => ({ value: i.email }))
+    } catch (ex) {
+      console.error(ex)
+      done(ex)
+      return
+    }
   }
   
   try {

@@ -25,8 +25,8 @@ export const VerifyMembership = async (accessToken: string): Promise<boolean> =>
   const response = await axios({
     url: 'https://api.github.com/user/memberships/orgs',
     headers: {
-      Authorization: `token ${accessToken}`
-    }
+      Authorization: `token ${accessToken}`,
+    },
   })
 
   const data = response.data as GithubMembershipsOrgsResponse[]

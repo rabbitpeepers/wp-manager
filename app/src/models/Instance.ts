@@ -25,7 +25,7 @@ export const InstanceSchema = new mongoose.Schema({
     lastName: String,
     blogName: String,
     email: String,
-  }
+  },
 })
 
 export const Instance = mongoose.model<InstanceDocument>('Instance', InstanceSchema)
