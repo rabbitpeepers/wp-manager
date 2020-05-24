@@ -25,7 +25,6 @@ const verify: OAuth2Strategy.VerifyFunctionWithRequest = async (
   }
 
   if (!isUserProfile(githubProfile)) {
-    console.log(githubProfile)
     done(new Error('profile is not UserProfile object'))
     return
   }

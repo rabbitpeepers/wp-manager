@@ -13,11 +13,16 @@ type OAuth2LoginFn = (
 ) => Promise<void>
 
 const OAuth2CreateAccount: OAuth2LoginFn = async (req, accessToken, refreshToken, profile, done) => {
+  let photoURL = ''
+  if (profile.photos && profile.photos.length) {
+    photoURL = profile.photos[0].value
+  }
+
   const newUser = new User({
     displayName: profile.displayName,
     username: profile.username,
     email: (profile.emails[0].value || ''),
-    photoURL: (profile.photos[0].value || ''),
+    photoURL,
     role: 'manager'
   })
 
