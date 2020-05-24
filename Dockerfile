@@ -2,8 +2,6 @@
 FROM node:14 AS webbuild
 WORKDIR /wp-manager
 
-ENV REACT_APP_API_URL=http://localhost:9000
-
 # install and cache app dependencies
 COPY ./package.json /wp-manager/package.json
 COPY ./bit-components /wp-manager/bit-components
