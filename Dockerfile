@@ -12,13 +12,13 @@ COPY ./web/tsconfig.json /wp-manager/web/tsconfig.json
 COPY ./web/.eslintrc /wp-manager/web/.eslintrc
 COPY ./web/src /wp-manager/web/src
 COPY ./app /wp-manager/app
-RUN yarn
+RUN yarn install --production
 
 WORKDIR /wp-manager/web
 RUN yarn build
 
 WORKDIR /wp-manager/app
-RUN yarn && yarn build
+RUN yarn install --production && yarn build
 
 # start app
 CMD ["yarn", "serve"]
