@@ -147,7 +147,6 @@ export const CreateInstanceForm: React.FC = () => {
             />
           </Grid>
         </Box>
-
         <Box margin={{ top: 'medium' }} flex direction="row">
           <Button
             label={t('app.cancel')}

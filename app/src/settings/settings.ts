@@ -26,5 +26,5 @@ export const settings = {
     organizationIds: env.APP_GITHUB_ORGANIZATIONS,
     scope: ['read:user', 'read:org']
   },
-  mongourl
+  mongourl,
 }
