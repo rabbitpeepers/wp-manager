@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-manager
+  namespace: wp-manager
+  labels:
+    app: wp-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wp-manager
+  template:
+    metadata:
+      labels:
+        app: wp-manager
+
+    spec:
+      volumes:
+        - name: env
+          secret:
+            secretName: wp-manager
+            items:
+              - key: env
+                path: .env
+      containers:
+        - name: wp-manager
+          image: dzirg44/wp-manager:v0.0.4
+          ports:
+            - containerPort: 9000
+          volumeMounts:
+            - name: env
+              mountPath: /wp-manager/app/.env
+              subPath: .env
+              readOnly: true

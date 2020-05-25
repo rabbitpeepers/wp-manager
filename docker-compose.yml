@@ -22,8 +22,8 @@ services:
       RACK_ENV: development
     volumes:
       - type: bind
-        source: ./app/.env
-        target: /wp-amanger/app/.env
+        source: .env
+        target: /wp-manager/app/.env
       - type: bind
         source: ./web/.env
         target: /wp-manager/web/.env

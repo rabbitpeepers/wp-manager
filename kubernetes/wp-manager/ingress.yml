@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  namespace: wp-manager
+  name: wp-manager-ingress
+  annotations:
+    kubernetes.io/ingress.class: "public"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+    - host: admin.sandbox.stryber.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: wp-manager
+              servicePort: http
