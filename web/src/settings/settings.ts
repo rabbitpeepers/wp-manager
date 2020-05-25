@@ -6,4 +6,5 @@ export const settings = {
     fallbackLng: 'en',
     debug: process.env.NODE_ENV === 'development',
   },
+  version: process.env.REACT_APP_VERSION || 'undefined',
 }

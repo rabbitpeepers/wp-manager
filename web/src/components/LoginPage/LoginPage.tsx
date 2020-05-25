@@ -6,6 +6,7 @@ import { LoginRouteParams } from 'src/components/LoginPage/types'
 import { Page } from 'src/components/Page/Page'
 import React from 'react'
 import { RouteComponentProps } from '@reach/router'
+import { Version } from 'src/components/About/Version'
 import { useTranslation } from 'react-i18next'
 
 type LoginPage = React.FC<RouteComponentProps<LoginRouteParams>>
@@ -24,6 +25,7 @@ export const LoginPage: LoginPage = () => {
         <Box margin="medium">
           <LoginGitHub setError={setError} />
         </Box>
+        <Version textAlign="center" />
       </Box>
     </Page>
   )
