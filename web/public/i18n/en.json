@@ -126,6 +126,7 @@
     }
   },
   "about": {
-    "title": "About"
+    "title": "About",
+    "version": "Version: "
   }
 }

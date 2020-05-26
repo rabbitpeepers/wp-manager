@@ -10,6 +10,7 @@ import React from 'react'
 import { Sidebar } from 'grommet'
 import { SidebarButton } from 'src/components/AppSidebar/SidebarButton'
 import { UserAvatar } from 'src/components/AppSidebar/UserAvatar'
+import { Version } from 'src/components/About/Version'
 import { useMe } from 'src/context/hook/useMe'
 import { useTranslation } from 'react-i18next'
 
@@ -28,12 +29,15 @@ export const AppSidebar: React.FC = () => {
       flex="shrink"
       header={<UserAvatar />}
       footer={(
-        <SidebarButton
-          icon={<Icons.Help />}
-          to={makeRoute(path.about)}
-          label={t('menu.about')}
-          hoverIndicator
-        />
+        <>
+          <SidebarButton
+            icon={<Icons.Help />}
+            to={makeRoute(path.about)}
+            label={t('menu.about')}
+            hoverIndicator
+          />
+          <Version size="small" margin="small" />
+        </>
       )}
       border={{ side: 'right', size: 'small', color: 'rgba(0, 0, 0, .35)' }}
     >
