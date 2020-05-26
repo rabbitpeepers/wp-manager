@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: wp-mongodb
+  namespace: wp-manager
+spec:
+  serviceName: wp-mongodb
+  replicas: 1
+  selector:
+    matchLabels:
+      app: database
+  template:
+    metadata:
+      labels:
+        app: database
+        selector: mongodb-standalone
+    spec:
+      containers:
+        - name: mongodb-standalone
+          image: mongo:4.2.0
+---
+

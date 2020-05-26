@@ -17,7 +17,7 @@ Admin panel for creating new WP instances.
 1. Create env from example.env.
 
 ```shell
-cp app/.example-env app/.env
+cp app/.example-env .env
 ```
 
 2. Setup Github
@@ -39,3 +39,23 @@ cp app/.example-env app/.env
 ### DOCKER-COMPOSE
 
 run `docker-compose up --build`
+
+### KUBERNETES
+
+1. create manifest with secrets `kubernetes/wp-manager/secret.yml`
+
+```yml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wp-manager
+  namespace: wp-manager
+type: Opaque
+stringData:
+  env: |
+    APP_PORT=9000
+    othervarsfrom env
+```
+
+run manifests form `kubernetes dir`

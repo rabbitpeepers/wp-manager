@@ -1,5 +1,7 @@
 .yarn
+.env
 node_modules
 .directory
 dist/*
 ./src/
+kubernetes/wp-manager/secret.yml

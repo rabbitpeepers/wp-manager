@@ -2,6 +2,8 @@
 FROM node:14 AS webbuild
 WORKDIR /wp-manager
 
+ARG REACT_APP_API_URL
+
 # install and cache app dependencies
 COPY ./package.json /wp-manager/package.json
 COPY ./bit-components /wp-manager/bit-components
