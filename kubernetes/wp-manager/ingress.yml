@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-    - host: admin.sandbox.stryber.io
+    - host: wp-manager.stryber.io
       http:
         paths:
           - path: /
